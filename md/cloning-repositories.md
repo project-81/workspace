@@ -8,7 +8,26 @@
 your account), follow
 [these instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 to add one.
-1. Issue the following commands:
+
+An SSH key pair can be reused across multiple machines or WSL distributions,
+but it's up to you on whether or not you want to re-use an existing one.
+
+One way to copy keys from an existing distribution:
+
+```
+cd /mnt/wsl
+cp ~/.ssh/id_rsa* .
+```
+
+Then, on the new distribution:
+
+```
+mkdir ~/.ssh
+cd ~/.ssh
+cp /mnt/wsl/id_rsa* .
+```
+
+3. Issue the following commands:
 
 ```
 cd
@@ -23,4 +42,4 @@ cd workspace
 git submodule update --init --recursive
 ```
 
-TODO - `pip install rcmpy` instructions, project-81 data repository.
+4. TODO - `rcmpy use` command here.

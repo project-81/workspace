@@ -33,11 +33,38 @@ distribution.
 ## Bootstrapping a Fresh Installation
 
 1. Update your system's information about internet package repositories
-with: `sudo zypper ref`
+with: `sudo zypper ref`.
+1. Update currently installed packages with `sudo zypper up`.
+1. If `zypper ps -s` lists any programs that need to be restarted (such as
+`bash`, the shell program itself exit the current session with `exit` and
+start a new one.
+1. Run `git` and confirm you see the following output:
 
-TODO - instructions for initial setup on openSUSE out of the box. Install
-`git`, etc.
+```
+If 'git' is not a typo you can use command-not-found to lookup the package that contains it, like this:
+    cnf git
+```
 
-## Cloning Repositories
+3. Run `cnf git` as suggested to determine how to install
+[Git](https://git-scm.com/). Confirm you see the following output:
 
-Documentation continues [here](cloning-repositories.md).
+```
+The program 'git' can be found in the following package:
+  * git-core [ path: /usr/bin/git, repository: zypp (repo-oss) ]
+
+Try installing with:
+    sudo zypper install git-core
+```
+
+4. Run `sudo zypper install git-core` as suggested and enter `y` (for yes)
+when prompted.
+4. Run `git version` to verify installation.
+4. Run `python3.11` then `cnf python3.11` to reveal the next command to run:
+`sudo zypper install python311-base`.
+4. Run `python3.11 --version` to verify installation.
+4. Install `pip3.11` with: `sudo zypper install python311-pip`.
+4. Install [rcmpy](https://github.com/vkottler/rcmpy) with:
+`pip install --user rcmpy`.
+
+Proceed to [the next page](cloning-repositories.md) for instructions
+on initial repository cloning and setup.
