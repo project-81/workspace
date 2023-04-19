@@ -22,4 +22,7 @@ git version
 sudo zypper install -y python${PYTHON_VERSION/./}-base
 sudo zypper install -y python${PYTHON_VERSION/./}-pip
 
+# Install rcmpy.
+pip install --user rcmpy
+
 echo "Script completed successfully."
