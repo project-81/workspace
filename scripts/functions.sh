@@ -14,3 +14,8 @@ assert_opensuse() {
 		exit 1
 	fi
 }
+
+run_install() {
+	# shellcheck disable=SC1090
+	. "$REPO/scripts/sh/install_$1.sh"
+}
