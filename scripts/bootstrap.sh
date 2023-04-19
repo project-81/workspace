@@ -15,7 +15,7 @@ sudo zypper up -y
 sudo zypper dup -y
 
 # Install git.
-sudo zypper install gitcore -y
+sudo zypper install git-core -y
 git version
 
 # Install Python.
