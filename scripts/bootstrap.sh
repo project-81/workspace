@@ -8,10 +8,18 @@ assert_opensuse
 
 set -x
 
-TASKS=(update git python rcmpy tmux)
+TASKS=(update git python rcmpy)
 
+# Run installation tasks.
 for TASK in "${TASKS[@]}"; do
 	run_install "$TASK"
+done
+
+PACKAGES=(tmux neovim)
+
+# Install basic packages.
+for PKG in "${PACKAGES[@]}"; do
+	install_package "$PKG"
 done
 
 echo "Script completed successfully."

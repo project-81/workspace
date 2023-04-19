@@ -1,4 +1,5 @@
 # Install Python.
 test "$PYTHON_VERSION"
-sudo zypper install -y "python${PYTHON_VERSION/./}-base"
-sudo zypper install -y "python${PYTHON_VERSION/./}-pip"
+for PKG in base pip; do
+	install_package "python${PYTHON_VERSION/./}-$PKG"
+done
