@@ -34,7 +34,7 @@ distribution.
 
 1. Update your system's information about internet package repositories
 with: `sudo zypper ref`.
-1. Update currently installed packages with `sudo zypper up`.
+1. Update currently installed packages with `sudo zypper up -y`.
 1. If `zypper ps -s` lists any programs that need to be restarted (such as
 `bash`, the shell program itself exit the current session with `exit` and
 start a new one.
