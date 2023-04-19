@@ -1,3 +1,6 @@
 [submodule "brand"]
 	path = brand
 	url = git@github.com:project-81/brand.git
+[submodule "config"]
+	path = config
+	url = git@github.com:project-81/config.git

@@ -6,6 +6,8 @@ REPO=$(git rev-parse --show-toplevel)
 # Script is designed for openSUSE bootstrapping only.
 assert_opensuse
 
+git submodule update --init --recursive
+
 set -x
 
 # Update software.
@@ -24,5 +26,11 @@ sudo zypper install -y python${PYTHON_VERSION/./}-pip
 
 # Install rcmpy.
 pip install --user rcmpy
+rcmpy --version
+
+# Update rcmpy.
+rcmpy use "$REPO/config/rcmpy"
+rcmpy variant "$USER"
+rcmpy apply
 
 echo "Script completed successfully."
