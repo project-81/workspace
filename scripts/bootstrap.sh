@@ -8,8 +8,10 @@ assert_opensuse
 
 set -x
 
-for TASK in update git python rcmpy; do
-	run_install $TASK
+TASKS=(update git python rcmpy tmux)
+
+for TASK in "${TASKS[@]}"; do
+	run_install "$TASK"
 done
 
 echo "Script completed successfully."
