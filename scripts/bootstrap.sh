@@ -15,11 +15,11 @@ sudo zypper up -y
 sudo zypper dup -y
 
 # Install git.
-sudo zypper install git-core -y
+sudo zypper install -y git-core
 git version
 
 # Install Python.
-sudo zypper install python${PYTHON_VERSION/./}-base -y
-sudo zypper install python${PYTHON_VERSION/./}-pip -y
+sudo zypper install -y python${PYTHON_VERSION/./}-base
+sudo zypper install -y python${PYTHON_VERSION/./}-pip
 
 echo "Script completed successfully."
