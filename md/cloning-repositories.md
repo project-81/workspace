@@ -35,11 +35,15 @@ git clone git@github.com:project-81/workspace.git
 ```
 
 This ensures that the workspace repository will be present in your home
-directory. Next, initialize submodules with:
+directory. Next, bootstrap your environment with:
 
 ```
 cd workspace
-git submodule update --init --recursive
+./scripts/bootstrap.sh
 ```
 
-4. TODO - `rcmpy use` command here.
+This will prompt you for your password to perform a number of commands relying
+on `sudo` to install (or update) a few system packages.
+
+This script will also initialize and update
+[submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules).

@@ -45,7 +45,7 @@ If 'git' is not a typo you can use command-not-found to lookup the package that 
     cnf git
 ```
 
-3. Run `cnf git` as suggested to determine how to install
+5. Run `cnf git` as suggested to determine how to install
 [Git](https://git-scm.com/). Confirm you see the following output:
 
 ```
@@ -56,14 +56,19 @@ Try installing with:
     sudo zypper install git-core
 ```
 
-4. Run `sudo zypper install git-core` as suggested and enter `y` (for yes)
-when prompted.
-4. Run `git version` to verify installation.
-4. Run `python3.11` then `cnf python3.11` to reveal the next command to run:
+6. Run `sudo zypper install -y git-core` as suggested (the `-y` skips a
+prompt).
+6. Run `git version` to verify installation.
+
+**Note: further steps have been automated in a shell script at:
+[`scripts/bootstrap.sh`](../scripts/bootstrap.sh). From here you may proceed
+to [the next page](cloning-repositories.md).**
+
+8. Run `python3.11` then `cnf python3.11` to reveal the next command to run:
 `sudo zypper install python311-base`.
-4. Run `python3.11 --version` to verify installation.
-4. Install `pip3.11` with: `sudo zypper install python311-pip`.
-4. Install [rcmpy](https://github.com/vkottler/rcmpy) with:
+8. Run `python3.11 --version` to verify installation.
+8. Install `pip3.11` with: `sudo zypper install python311-pip`.
+8. Install [rcmpy](https://github.com/vkottler/rcmpy) with:
 `pip install --user rcmpy`.
 
 Proceed to [the next page](cloning-repositories.md) for instructions
