@@ -1,5 +1,4 @@
-# Install rcmpy.
-pip install --user rcmpy
+# Package should be installed via requirements file.
 rcmpy --version
 
 # Update rcmpy.
