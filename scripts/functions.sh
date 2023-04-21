@@ -23,3 +23,7 @@ run_install() {
 install_package() {
 	sudo zypper install -y "$1"
 }
+
+is_wsl() {
+	[[ $(uname -r) == *"microsoft"* ]]
+}

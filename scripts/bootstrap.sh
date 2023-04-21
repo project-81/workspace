@@ -8,7 +8,7 @@ assert_opensuse
 
 set -x
 
-TASKS=(update git python rcmpy)
+TASKS=(init update git python rcmpy)
 
 # Run installation tasks.
 for TASK in "${TASKS[@]}"; do
