@@ -17,14 +17,14 @@ fi
 
 set -x
 
-TASKS=(init update git python go zsh rcmpy)
+TASKS=(init update git python go zsh neovim rcmpy)
 
 # Run installation tasks.
 for TASK in "${TASKS[@]}"; do
 	run_install "$TASK"
 done
 
-PACKAGES=(tmux neovim)
+PACKAGES=(tmux)
 
 # Install basic packages.
 for PKG in "${PACKAGES[@]}"; do
