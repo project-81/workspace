@@ -1,10 +1,19 @@
 #!/bin/bash
 
-REPO=$(git rev-parse --show-toplevel)
+if [ "$WORKSPACE" ] && [ -d "$WORKSPACE" ]; then
+	REPO="$WORKSPACE"
+else
+	REPO=$(git rev-parse --show-toplevel)
+fi
 . "$REPO/scripts/common.sh"
 
 # Script is designed for openSUSE bootstrapping only.
 assert_opensuse
+
+# Link the bootstrapping script so we can just run 'bootstrap'.
+if [ ! -L $HOME/bin/bootstrap ]; then
+	ln -s $SCRIPTS/bootstrap.sh $HOME/bin/bootstrap
+fi
 
 set -x
 
