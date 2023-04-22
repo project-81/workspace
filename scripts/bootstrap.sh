@@ -11,24 +11,30 @@ fi
 assert_opensuse
 
 # Link the bootstrapping script so we can just run 'bootstrap'.
-if [ ! -L $HOME/bin/bootstrap ]; then
-	ln -s $SCRIPTS/bootstrap.sh $HOME/bin/bootstrap
+if [ ! -L "$HOME/bin/bootstrap" ]; then
+	ln -s "$SCRIPTS/bootstrap.sh" "$HOME/bin/bootstrap"
 fi
 
 set -x
 
-TASKS=(init update git python go zsh neovim rcmpy)
+if [ "$1" ]; then
+	TASKS=("$1")
+else
+	TASKS=(init update git python go zsh neovim rcmpy)
+fi
 
 # Run installation tasks.
 for TASK in "${TASKS[@]}"; do
 	run_install "$TASK"
 done
 
-PACKAGES=(tmux)
+if [ -z "$1" ]; then
+	PACKAGES=(tmux)
 
-# Install basic packages.
-for PKG in "${PACKAGES[@]}"; do
-	install_package "$PKG"
-done
+	# Install basic packages.
+	for PKG in "${PACKAGES[@]}"; do
+		install_package "$PKG"
+	done
+fi
 
 echo "Script completed successfully."
