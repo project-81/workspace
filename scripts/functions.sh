@@ -27,3 +27,28 @@ install_package() {
 is_wsl() {
 	[[ $(uname -r) == *"microsoft"* ]]
 }
+
+THIRD_PARTY=$HOME/third-party
+
+clone_third_party_ssh() {
+	mkdir -p "$THIRD_PARTY"
+	pushd "$THIRD_PARTY" >/dev/null
+
+	if [ ! -d "$2" ]; then
+		git clone "$3@$4:$1/$2.git"
+		echo "Cloned '$1/$2'."
+	else
+		echo "Not cloning '$1/$2', already present."
+	fi
+
+	# Update the repository while we're here.
+	pushd "$2" >/dev/null
+	git pull --prune
+	popd >/dev/null
+
+	popd >/dev/null
+}
+
+clone_third_party_github() {
+	clone_third_party_ssh "$1" "$2" git github.com
+}
