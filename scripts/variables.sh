@@ -1,1 +1,2 @@
-export PYTHON_VERSION=3.11
+[ "$PYTHON_VERSION" ] || export PYTHON_VERSION=3.11
+[ "$GO_VERSION" ] || export GO_VERSION=1.20
