@@ -5,6 +5,8 @@ if [ "$WORKSPACE" ] && [ -d "$WORKSPACE" ]; then
 else
 	REPO=$(git rev-parse --show-toplevel)
 fi
+
+# shellcheck source=common.sh
 . "$REPO/scripts/common.sh"
 
 # Script is designed for openSUSE bootstrapping only.

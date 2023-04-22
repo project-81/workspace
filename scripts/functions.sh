@@ -32,7 +32,7 @@ THIRD_PARTY=$HOME/third-party
 
 clone_third_party_ssh() {
 	mkdir -p "$THIRD_PARTY"
-	pushd "$THIRD_PARTY" >/dev/null
+	pushd "$THIRD_PARTY" >/dev/null || exit
 
 	if [ ! -d "$2" ]; then
 		git clone "$3@$4:$1/$2.git"
@@ -42,11 +42,11 @@ clone_third_party_ssh() {
 	fi
 
 	# Update the repository while we're here.
-	pushd "$2" >/dev/null
+	pushd "$2" >/dev/null || exit
 	git pull --prune
-	popd >/dev/null
+	popd >/dev/null || exit
 
-	popd >/dev/null
+	popd >/dev/null || exit
 }
 
 clone_third_party_github() {

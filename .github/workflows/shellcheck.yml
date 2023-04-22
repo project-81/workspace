@@ -1,0 +1,23 @@
+---
+name: shellcheck
+
+on:  # yamllint disable-line
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+
+    runs-on: ${{matrix.system}}
+    strategy:
+      matrix:
+        system: [ubuntu-latest]
+
+    steps:
+      - uses: actions/checkout@master
+
+      - uses: ludeeus/action-shellcheck@master
+        env:
+          SHELLCHECK_OPTS: -P scripts -s bash -x -f gcc

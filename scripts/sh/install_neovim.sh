@@ -11,10 +11,10 @@ if [ ! -L "$HOME/.config/nvim/autoload" ]; then
 	ln -s "$VIM_AUTOLOAD" "$HOME/.config/nvim/autoload"
 fi
 
-pushd "$VIM_AUTOLOAD" >/dev/null
+pushd "$VIM_AUTOLOAD" >/dev/null || exit
 
 if ! [ -L plug.vim ]; then
 	ln -s "$THIRD_PARTY/vim-plug/plug.vim" .
 fi
 
-popd >/dev/null
+popd >/dev/null || exit
