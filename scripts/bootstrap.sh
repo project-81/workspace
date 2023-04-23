@@ -31,7 +31,7 @@ for TASK in "${TASKS[@]}"; do
 done
 
 if [ -z "$1" ]; then
-	PACKAGES=(tmux openocd htop)
+	PACKAGES=(tmux openocd htop rsync)
 
 	# Install basic packages.
 	for PKG in "${PACKAGES[@]}"; do
