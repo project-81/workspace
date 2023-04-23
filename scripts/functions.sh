@@ -6,11 +6,17 @@ os_id() {
 	read_os_release ID
 }
 
+is_opensuse() {
+	[ "$(os_id)" = "opensuse-tumbleweed" ]
+}
+
+is_debian() {
+	[ "$(os_id)" = "debian" ]
+}
+
 assert_opensuse() {
-	local OS_ID
-	OS_ID=$(os_id)
-	if ! [ "$OS_ID" = "opensuse-tumbleweed" ]; then
-		echo "Expected 'opensuse-tumbleweed' but got '$OS_ID'."
+	if ! is_opensuse; then
+		echo "Expected 'opensuse-tumbleweed' but got '$(os_id)'."
 		exit 1
 	fi
 }

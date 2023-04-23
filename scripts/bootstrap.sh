@@ -9,34 +9,17 @@ fi
 # shellcheck source=common.sh
 . "$REPO/scripts/common.sh"
 
-# Script is designed for openSUSE bootstrapping only.
-assert_opensuse
-
 # Link the bootstrapping script so we can just run 'bootstrap'.
 if [ ! -L "$HOME/bin/bootstrap" ]; then
 	ln -s "$SCRIPTS/bootstrap.sh" "$HOME/bin/bootstrap"
 fi
 
-set -x
-
-if [ "$1" ]; then
-	TASKS=("$1")
-else
-	TASKS=(init update git python go zsh neovim rcmpy)
-fi
-
-# Run installation tasks.
-for TASK in "${TASKS[@]}"; do
-	run_install "$TASK"
-done
-
-if [ -z "$1" ]; then
-	PACKAGES=(tmux openocd htop rsync)
-
-	# Install basic packages.
-	for PKG in "${PACKAGES[@]}"; do
-		install_package "$PKG"
-	done
+if is_opensuse; then
+	# shellcheck source=sh/opensuse.sh
+	. "$SCRIPTS/opensuse.sh"
+elif is_debian; then
+	# shellcheck source=sh/debian.sh
+	. "$SCRIPTS/debian.sh"
 fi
 
 echo "Script completed successfully."
