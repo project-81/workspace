@@ -2,10 +2,9 @@
 
 sudo apt-get update && sudo apt-get upgrade -y
 
-TASKS+=(git python rcmpy zsh)
+TASKS+=(git python neovim rcmpy zsh)
 
-if is_rpi; then
-	echo "is pi"
-fi
+# if is_rpi; then
+# fi
 
 PACKAGES+=(tmux)
