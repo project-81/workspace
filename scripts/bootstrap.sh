@@ -1,6 +1,7 @@
 #!/bin/bash
 
-if [ "$WORKSPACE" ] && [ -d "$WORKSPACE" ]; then
+[ "$WORKSPACE" ] || export WORKSPACE=$HOME/workspace
+if [ -d "$WORKSPACE" ]; then
 	REPO="$WORKSPACE"
 else
 	REPO=$(git rev-parse --show-toplevel)
