@@ -54,7 +54,9 @@ is_wsl() {
 }
 
 is_rpi() {
-	[ "$(uname -n)" = "raspberrypi" ] || is_raspbian
+	[ "$(uname -n)" = "raspberrypi" ] \
+		|| is_raspbian \
+		|| [[ $(uname -n) == "rpi"* ]]
 }
 
 THIRD_PARTY=$HOME/third-party
