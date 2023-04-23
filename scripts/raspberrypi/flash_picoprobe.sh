@@ -1,7 +1,7 @@
 #!/bin/bash
 
 REPO=$(git rev-parse --show-toplevel)
-# shellcheck disable=SC1090
+# shellcheck disable=SC1091
 . "$REPO/scripts/common.sh"
 
 PROJECT=picoprobe
