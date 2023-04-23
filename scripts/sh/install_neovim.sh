@@ -1,10 +1,10 @@
 if is_rpi; then
-	# 32-bit Raspbian doesn't support squashfs.
-	if ! is_raspbian; then
-		# https://raspberrypi.stackexchange.com/a/119934
-		sudo apt install snapd -y
-		sudo snap install --classic nvim
-	fi
+	# 32-bit Raspbian doesn't support squashfs. It seems like only the Pi 4
+	# supports it.
+
+	# https://raspberrypi.stackexchange.com/a/119934
+	sudo apt install snapd -y || true
+	sudo snap install --classic nvim || true
 else
 	install_package neovim
 fi

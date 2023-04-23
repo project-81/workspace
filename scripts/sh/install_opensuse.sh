@@ -4,4 +4,4 @@
 assert_opensuse
 
 TASKS+=(init update git python go zsh neovim rcmpy)
-PACKAGES+=(tmux htop rsync)
+PACKAGES+=(tmux htop rsync psmisc)
