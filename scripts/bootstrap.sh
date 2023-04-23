@@ -17,12 +17,31 @@ if [ ! -L "$HOME/bin/bootstrap" ]; then
 	ln -s "$SCRIPTS/bootstrap.sh" "$HOME/bin/bootstrap"
 fi
 
-if is_opensuse; then
-	# shellcheck source=sh/opensuse.sh
-	. "$SCRIPTS/sh/opensuse.sh"
-elif is_debian; then
-	# shellcheck source=sh/debian.sh
-	. "$SCRIPTS/sh/debian.sh"
+TASKS=()
+PACKAGES=()
+
+if [ "$1" ]; then
+	TASKS=("$1")
+else
+	TASKS=()
+
+	if is_opensuse; then
+		# shellcheck source=sh/opensuse.sh
+		. "$SCRIPTS/sh/opensuse.sh"
+	elif is_debian; then
+		# shellcheck source=sh/debian.sh
+		. "$SCRIPTS/sh/debian.sh"
+	fi
 fi
+
+# Run installation tasks.
+for TASK in "${TASKS[@]}"; do
+	run_install "$TASK"
+done
+
+# Install basic packages.
+for PKG in "${PACKAGES[@]}"; do
+	install_package "$PKG"
+done
 
 echo "Script completed successfully."

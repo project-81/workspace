@@ -27,7 +27,11 @@ run_install() {
 }
 
 install_package() {
-	sudo zypper install -y "$1"
+	if is_opensuse; then
+		sudo zypper install -y "$1"
+	elif is_debian; then
+		sudo apt-get install -yu "$1"
+	fi
 }
 
 is_wsl() {
