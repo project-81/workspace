@@ -17,10 +17,10 @@ fi
 
 if is_opensuse; then
 	# shellcheck source=sh/opensuse.sh
-	. "$SCRIPTS/opensuse.sh"
+	. "$SCRIPTS/sh/opensuse.sh"
 elif is_debian; then
 	# shellcheck source=sh/debian.sh
-	. "$SCRIPTS/debian.sh"
+	. "$SCRIPTS/sh/debian.sh"
 fi
 
 echo "Script completed successfully."
