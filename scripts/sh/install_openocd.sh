@@ -2,6 +2,11 @@
 
 PROJECT=openocd
 
+# Return early if it's already installed.
+if is_cmd $PROJECT; then
+	return
+fi
+
 clone_third_party_github raspberrypi $PROJECT
 
 safe_pushd "$THIRD_PARTY/$PROJECT"
