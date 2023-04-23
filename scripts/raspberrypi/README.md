@@ -1,5 +1,11 @@
 # raspberrypi
 
+1. Run `winget rpi-imager` in PowerShell.
+1. Open "Raspberry Pi Imager" via Start Menu (search for it).
+1. Choose "Raspberry Pi OS Lite (64-Bit)" in "Raspberry Pi OS (other)" menu.
+
+## Notes
+
 Trying to install this: https://github.com/dorssel/usbipd-win
 
 Had to restart Terminal to get `usbipd` to be available on PATH.
