@@ -24,4 +24,4 @@ install_udev_rule udev/99-$PROJECT.rules
 
 popd >/dev/null || exit
 
-picotool version
+~/bin/$PROJECT version
