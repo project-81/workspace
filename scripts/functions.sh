@@ -16,12 +16,13 @@ is_opensuse() {
 	os_id_is "opensuse-tumbleweed"
 }
 
-is_debian() {
-	os_id_is "debian"
-}
-
 is_raspbian() {
 	os_id_is "raspbian"
+}
+
+is_debian() {
+	# Include 'raspbian' in this check for now, too.
+	os_id_is "debian" || is_raspbian
 }
 
 assert_opensuse() {
