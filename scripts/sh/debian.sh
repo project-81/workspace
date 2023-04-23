@@ -7,3 +7,5 @@ TASKS+=(git python rcmpy zsh)
 if is_rpi; then
 	echo "is pi"
 fi
+
+PACKAGES+=(tmux)
