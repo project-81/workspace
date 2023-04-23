@@ -11,6 +11,7 @@ fi
 
 # Link the bootstrapping script so we can just run 'bootstrap'.
 if [ ! -L "$HOME/bin/bootstrap" ]; then
+	mkdir -p "$HOME/bin"
 	ln -s "$SCRIPTS/bootstrap.sh" "$HOME/bin/bootstrap"
 fi
 
