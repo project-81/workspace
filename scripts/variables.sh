@@ -6,3 +6,6 @@ if [ -z "$PYTHON_VERSION" ]; then
 	fi
 fi
 [ "$GO_VERSION" ] || export GO_VERSION=1.20
+
+UDEV_DEST=/usr/lib/udev/rules.d
+test $UDEV_DEST

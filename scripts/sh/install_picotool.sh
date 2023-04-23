@@ -15,15 +15,8 @@ if [ ! -L ~/bin/$PROJECT ]; then
 	popd >/dev/null || exit
 fi
 
-UDEV_FILE=99-$PROJECT.rules
-
-UDEV_DEST=/usr/lib/udev/rules.d
-
 # Install the udev rule.
-if [ ! -L $UDEV_DEST/$UDEV_FILE ]; then
-	sudo ln -s "$(realpath udev/$UDEV_FILE)" $UDEV_DEST/$UDEV_FILE
-	sudo udevadm control --reload-rules && sudo udevadm trigger
-fi
+install_udev_rule udev/99-$PROJECT.rules
 
 popd >/dev/null || exit
 

@@ -78,3 +78,19 @@ safe_pushd() {
 safe_popd() {
 	popd >/dev/null || exit
 }
+
+poke_ssh() {
+	eval "$(ssh-agent -s)"
+	ssh-add ~/.ssh/id_rsa
+}
+
+install_udev_rule() {
+	local DEST
+	DEST="$UDEV_DEST/$(basename "$1")"
+
+	if [ ! -L "$DEST" ]; then
+		sudo ln -s "$(realpath "$1")" "$DEST"
+		sudo udevadm control --reload-rules && sudo udevadm trigger
+		echo "Installed udev rule '$DEST'."
+	fi
+}
