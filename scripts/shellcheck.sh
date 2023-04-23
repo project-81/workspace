@@ -7,7 +7,7 @@ REPO=$(git rev-parse --show-toplevel)
 
 pushd "$SCRIPTS" >/dev/null || exit
 
-FILES=$(find . -type f)
+FILES=$(find . -type f -name "*.sh")
 for file in $FILES
 do
 	shellcheck -s bash -x -f gcc "$file"

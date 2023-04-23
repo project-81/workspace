@@ -1,0 +1,4 @@
+[wsl2]
+kernel=C:\\Users\\vkottler\\bzImage
+swap=0
+localhostForwarding=true

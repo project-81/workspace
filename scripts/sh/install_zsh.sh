@@ -5,5 +5,9 @@ if ! [[ "$SHELL" == *"zsh" ]]; then
 	chsh -s "$(which zsh)"
 fi
 
-# Install ShellCheck.
-install_package ShellCheck
+if is_opensuse; then
+	# Install ShellCheck.
+	PACKAGES+=(ShellCheck)
+else
+	PACKAGES+=(shellcheck)
+fi

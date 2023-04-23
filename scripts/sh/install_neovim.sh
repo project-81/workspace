@@ -1,4 +1,10 @@
-install_package neovim
+if is_rpi; then
+	# https://raspberrypi.stackexchange.com/a/119934
+	sudo apt install snapd -y
+	sudo snap install --classic nvim
+else
+	install_package neovim
+fi
 
 clone_third_party_github junegunn vim-plug
 

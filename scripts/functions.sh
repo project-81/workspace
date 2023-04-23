@@ -1,3 +1,5 @@
+#!/bin/bash
+
 read_os_release() {
 	grep -oP "(?<=^$1=).+" /etc/os-release | tr -d '"'
 }
@@ -6,11 +8,17 @@ os_id() {
 	read_os_release ID
 }
 
+is_opensuse() {
+	[ "$(os_id)" = "opensuse-tumbleweed" ]
+}
+
+is_debian() {
+	[ "$(os_id)" = "debian" ]
+}
+
 assert_opensuse() {
-	local OS_ID
-	OS_ID=$(os_id)
-	if ! [ "$OS_ID" = "opensuse-tumbleweed" ]; then
-		echo "Expected 'opensuse-tumbleweed' but got '$OS_ID'."
+	if ! is_opensuse; then
+		echo "Expected 'opensuse-tumbleweed' but got '$(os_id)'."
 		exit 1
 	fi
 }
@@ -21,11 +29,19 @@ run_install() {
 }
 
 install_package() {
-	sudo zypper install -y "$1"
+	if is_opensuse; then
+		sudo zypper install -y "$1"
+	elif is_debian; then
+		sudo apt-get install -yu "$1"
+	fi
 }
 
 is_wsl() {
 	[[ $(uname -r) == *"microsoft"* ]]
+}
+
+is_rpi() {
+	[ "$(uname -n)" = "raspberrypi" ]
 }
 
 THIRD_PARTY=$HOME/third-party
@@ -44,6 +60,7 @@ clone_third_party_ssh() {
 	# Update the repository while we're here.
 	pushd "$2" >/dev/null || exit
 	git pull --prune
+	git submodule update --init
 	popd >/dev/null || exit
 
 	popd >/dev/null || exit
@@ -51,4 +68,29 @@ clone_third_party_ssh() {
 
 clone_third_party_github() {
 	clone_third_party_ssh "$1" "$2" git github.com
+}
+
+safe_pushd() {
+	mkdir -p "$1"
+	pushd "$1" >/dev/null || exit
+}
+
+safe_popd() {
+	popd >/dev/null || exit
+}
+
+poke_ssh() {
+	eval "$(ssh-agent -s)"
+	ssh-add ~/.ssh/id_rsa
+}
+
+install_udev_rule() {
+	local DEST
+	DEST="$UDEV_DEST/$(basename "$1")"
+
+	if [ ! -L "$DEST" ]; then
+		sudo ln -s "$(realpath "$1")" "$DEST"
+		sudo udevadm control --reload-rules && sudo udevadm trigger
+		echo "Installed udev rule '$DEST'."
+	fi
 }
