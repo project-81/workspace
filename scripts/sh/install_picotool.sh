@@ -2,6 +2,10 @@
 
 PROJECT=picotool
 
+# Ensure PICO_SDK_PATH is set (and is present).
+[ "$PICO_SDK_PATH" ] || export PICO_SDK_PATH="$THIRD_PARTY/pico-sdk"
+test -d "$PICO_SDK_PATH"
+
 pushd "$THIRD_PARTY/$PROJECT" >/dev/null || exit
 
 if [ ! -L ~/bin/$PROJECT ]; then

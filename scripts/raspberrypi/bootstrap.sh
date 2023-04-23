@@ -4,7 +4,7 @@ set -e
 
 # Install git so we can clone the repository.
 if ! type git >/dev/null; then
-	sudo apt-get install git -y
+	sudo apt-get update && sudo apt-get install git -y
 fi
 
 # Add github's SSH key so we can clone without a prompt.
