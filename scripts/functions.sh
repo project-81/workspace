@@ -34,6 +34,10 @@ is_wsl() {
 	[[ $(uname -r) == *"microsoft"* ]]
 }
 
+is_rpi() {
+	[ "$(uname -n)" = "raspberrypi" ]
+}
+
 THIRD_PARTY=$HOME/third-party
 
 clone_third_party_ssh() {
