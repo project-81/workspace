@@ -1,6 +1,8 @@
 # Install git.
-if is_opensuse; then
-	install_package git-core
+if ! is_cmd git; then
+	if is_opensuse; then
+		install_package git-core
+	fi
 fi
 
 git version

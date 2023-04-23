@@ -33,8 +33,12 @@ assert_opensuse() {
 }
 
 run_install() {
+	echo "Starting install script for '$1'."
+
 	# shellcheck disable=SC1090
 	. "$REPO/scripts/sh/install_$1.sh"
+
+	echo "Install script for '$1' completed."
 }
 
 install_package() {
@@ -50,7 +54,7 @@ is_wsl() {
 }
 
 is_rpi() {
-	[ "$(uname -n)" = "raspberrypi" ]
+	[ "$(uname -n)" = "raspberrypi" ] || is_raspbian
 }
 
 THIRD_PARTY=$HOME/third-party

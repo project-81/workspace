@@ -20,9 +20,10 @@ SSH_ARG="$USER@$(ipv4_addr "$1")"
 ssh "$SSH_ARG" "rm -f ~/bootstrap.sh"
 
 URL_BASE=https://raw.githubusercontent.com/project-81/workspace/master
+
 # shellcheck disable=SC2029
 ssh "$SSH_ARG" \
-	"curl $URL_BASE/scripts/raspberrypi/bootstrap.sh -O ~/bootstrap.sh"
+	"curl $URL_BASE/scripts/raspberrypi/bootstrap.sh -so ~/bootstrap.sh"
 
 # Run the bootstrapping script.
 ssh "$SSH_ARG" "sh ~/bootstrap.sh"
