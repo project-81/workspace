@@ -1,7 +1,13 @@
+# Find the script, if our PATH isn't updated yet that's okay.
+RCMPY=rcmpy
+if ! is_cmd $RCMPY; then
+	RCMPY=~/.local/bin/$RCMPY
+fi
+
 # Package should be installed via requirements file.
-rcmpy --version
+$RCMPY --version
 
 # Update rcmpy.
-rcmpy use "$REPO/config/rcmpy"
-rcmpy variant "$USER"
-rcmpy apply
+$RCMPY use "$REPO/config/rcmpy"
+$RCMPY variant "$USER"
+$RCMPY apply

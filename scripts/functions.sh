@@ -122,3 +122,7 @@ await_pingable() {
 ipv4_addr() {
 	getent ahostsv4 "$1" | sed -n 's/ *STREAM.*//p'
 }
+
+is_cmd() {
+	type "$1" >/dev/null
+}
