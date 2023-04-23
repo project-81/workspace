@@ -1,6 +1,8 @@
 sudo apt-get update && sudo apt-get upgrade -y
 
-TASKS+=(python rcmpy)
+git version
+
+TASKS+=(git python rcmpy)
 
 if is_rpi; then
 	echo "is pi"
