@@ -19,6 +19,6 @@ add_ssh_keys.sh "$1"
 URL_BASE=https://raw.githubusercontent.com/project-81/workspace/master
 # shellcheck disable=SC2029
 ssh "$USER@$(ipv4_addr "$1")" \
-	"curl $URL_BASE/scripts/raspberrypi/bootstrap.sh -Sf | sh"
+	"curl $URL_BASE/scripts/raspberrypi/bootstrap.sh -sSf | sh"
 
 echo "Provisioning succeeded!"

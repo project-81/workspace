@@ -13,8 +13,6 @@ if ! grep -q "github.com" ~/.ssh/known_hosts; then
 	ssh-keyscan github.com >> ~/.ssh/known_hosts
 fi
 
-set -x
-
 # Clone the repository if necessary.
 if [ ! -d ~/workspace ]; then
 	cd && git clone git@github.com:project-81/workspace.git

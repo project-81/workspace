@@ -8,12 +8,20 @@ os_id() {
 	read_os_release ID
 }
 
+os_id_is() {
+	[ "$(os_id)" = "$1" ]
+}
+
 is_opensuse() {
-	[ "$(os_id)" = "opensuse-tumbleweed" ]
+	os_id_is "opensuse-tumbleweed"
 }
 
 is_debian() {
-	[ "$(os_id)" = "debian" ]
+	os_id_is "debian"
+}
+
+is_raspbian() {
+	os_id_is "raspbian"
 }
 
 assert_opensuse() {

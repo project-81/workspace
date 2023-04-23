@@ -27,7 +27,7 @@ else
 
 	if is_opensuse; then
 		run_install opensuse
-	elif is_debian; then
+	elif is_debian || is_raspbian; then
 		run_install debian
 	fi
 fi
