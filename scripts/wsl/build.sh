@@ -1,7 +1,7 @@
 #!/bin/bash
 
 REPO=$(git rev-parse --show-toplevel)
-# shellcheck source=../common.sh
+# shellcheck source=common.sh
 . "$REPO/scripts/common.sh"
 
 pushd "$THIRD_PARTY/WSL2-Linux-Kernel" >/dev/null || exit
