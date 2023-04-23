@@ -1,4 +1,7 @@
+#!/bin/bash
+
 # Script is designed for openSUSE bootstrapping only.
 assert_opensuse
+
 TASKS+=(init update git python go zsh neovim rcmpy)
-PACKAGES+=(tmux openocd htop rsync)
+PACKAGES+=(tmux htop rsync)

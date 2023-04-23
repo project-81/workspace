@@ -26,22 +26,20 @@ else
 	TASKS=()
 
 	if is_opensuse; then
-		# shellcheck source=sh/opensuse.sh
-		. "$SCRIPTS/sh/opensuse.sh"
+		run_install opensuse
 	elif is_debian; then
-		# shellcheck source=sh/debian.sh
-		. "$SCRIPTS/sh/debian.sh"
+		run_install debian
 	fi
 fi
-
-# Run installation tasks.
-for TASK in "${TASKS[@]}"; do
-	run_install "$TASK"
-done
 
 # Install basic packages.
 for PKG in "${PACKAGES[@]}"; do
 	install_package "$PKG"
+done
+
+# Run installation tasks.
+for TASK in "${TASKS[@]}"; do
+	run_install "$TASK"
 done
 
 echo "Script completed successfully."

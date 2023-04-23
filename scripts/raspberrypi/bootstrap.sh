@@ -1,7 +1,7 @@
 #!/bin/bash
 
 REPO=$(git rev-parse --show-toplevel)
-# shellcheck source=common.sh
+# shellcheck disable=SC1090
 . "$REPO/scripts/common.sh"
 
 install_package rpi-imager

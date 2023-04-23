@@ -1,3 +1,5 @@
+#!/bin/bash
+
 read_os_release() {
 	grep -oP "(?<=^$1=).+" /etc/os-release | tr -d '"'
 }
@@ -58,6 +60,7 @@ clone_third_party_ssh() {
 	# Update the repository while we're here.
 	pushd "$2" >/dev/null || exit
 	git pull --prune
+	git submodule update --init
 	popd >/dev/null || exit
 
 	popd >/dev/null || exit
@@ -65,4 +68,13 @@ clone_third_party_ssh() {
 
 clone_third_party_github() {
 	clone_third_party_ssh "$1" "$2" git github.com
+}
+
+safe_pushd() {
+	mkdir -p "$1"
+	pushd "$1" >/dev/null || exit
+}
+
+safe_popd() {
+	popd >/dev/null || exit
 }
