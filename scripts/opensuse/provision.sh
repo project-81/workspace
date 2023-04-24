@@ -9,4 +9,4 @@ REPO=$(git rev-parse --show-toplevel)
 # shellcheck disable=SC1091
 . "$REPO/scripts/provision.sh"
 
-provision "$1" raspberrypi
+provision "$1" opensuse
