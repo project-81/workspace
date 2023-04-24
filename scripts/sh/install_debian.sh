@@ -2,7 +2,7 @@
 
 sudo apt-get update && sudo apt-get upgrade -y
 
-TASKS+=(git python neovim rcmpy zsh)
+TASKS+=(git python rcmpy zsh)
 
 if is_rpi; then
 	run_install raspberrypi
