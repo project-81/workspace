@@ -28,6 +28,8 @@ VERSION=0.9
 clone_third_party_github_shallow $PROJECT $PROJECT "--branch=release-$VERSION"
 safe_pushd "$THIRD_PARTY/$PROJECT"
 
+export CMAKE_BUILD_TYPE=Release
+
 # Build dependencies.
 mkdir -p .deps
 safe_pushd .deps
@@ -35,8 +37,10 @@ cmake ../cmake.deps
 make "-j$(nproc)"
 safe_popd
 
-make "-j$(nproc)" CMAKE_BUILD_TYPE=Release
+make "-j$(nproc)"
 
 sudo make install
+
+unset CMAKE_BUILD_TYPE
 
 safe_popd
