@@ -28,10 +28,17 @@ if [ ! -L "$HOME/.config/nvim/autoload" ]; then
 	ln -s "$VIM_AUTOLOAD" "$HOME/.config/nvim/autoload"
 fi
 
-pushd "$VIM_AUTOLOAD" >/dev/null || exit
+safe_pushd "$VIM_AUTOLOAD"
 
 if ! [ -L plug.vim ]; then
 	ln -s "$THIRD_PARTY/vim-plug/plug.vim" .
 fi
 
-popd >/dev/null || exit
+safe_popd
+
+# Install plugins.
+if is_cmd nvim; then
+	nvim +'PlugInstall --sync' +qa
+elif [ -f "$INSTALL_PREFIX/bin/nvim" ]; then
+	f "$INSTALL_PREFIX/bin/nvim" +'PlugInstall --sync' +qa
+fi
