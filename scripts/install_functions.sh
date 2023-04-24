@@ -7,6 +7,10 @@ run_install() {
 	echo "Install script for '$1' completed."
 }
 
+run_src_install() {
+	run_install "$1-src"
+}
+
 install_package() {
 	if is_opensuse; then
 		sudo_cmd zypper install -y "$1"

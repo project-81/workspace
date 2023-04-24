@@ -1,16 +1,29 @@
+git_ssh_url() {
+	echo "ssh://$1@$2/$3/$4.git"
+}
+
+github_ssh_url() {
+	git_ssh_url git github.com "$1" "$2"
+}
+
 clone_third_party_ssh() {
 	mkdir -p "$THIRD_PARTY"
 	pushd "$THIRD_PARTY" >/dev/null || exit
 
-	if [ ! -d "$2" ]; then
-		git clone "$3@$4:$1/$2.git"
-		echo "Cloned '$1/$2'."
+	USER=$1 && shift
+	HOST=$1 && shift
+	PROJECT=$1 && shift
+	REPO=$1 && shift
+
+	if [ ! -d "$REPO" ]; then
+		git clone "ssh://$USER@$HOST/$PROJECT/$REPO.git" "$@"
+		echo "Cloned '$PROJECT/$REPO'."
 	else
-		echo "Not cloning '$1/$2', already present."
+		echo "Not cloning '$PROJECT/$REPO', already present."
 	fi
 
 	# Update the repository while we're here.
-	pushd "$2" >/dev/null || exit
+	pushd "$REPO" >/dev/null || exit
 
 	# This can fail if HEAD is detached.
 	git pull --prune || true
@@ -22,5 +35,5 @@ clone_third_party_ssh() {
 }
 
 clone_third_party_github() {
-	clone_third_party_ssh "$1" "$2" git github.com
+	clone_third_party_ssh git github.com "$@"
 }

@@ -23,7 +23,10 @@ if ! is_cmd msgmerge; then
 fi
 
 PROJECT=neovim
-clone_third_party_github $PROJECT $PROJECT
+VERSION=0.9
+
+clone_third_party_github $PROJECT $PROJECT \
+	--depth=1 --single-branch "release-$VERSION"
 safe_pushd "$THIRD_PARTY/$PROJECT"
 
 git fetch
