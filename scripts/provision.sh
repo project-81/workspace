@@ -18,6 +18,12 @@ function provision() {
 	BRANCH=master
 	URL_BASE=https://raw.githubusercontent.com/$ORG/$REPO/$BRANCH
 
+	# Prompt for sudo password.
+	read -r -p "Password for sudo: " SUDO_PASS
+	"${SSH_ARGS[@]}" "touch ~/password.txt"
+	"${SSH_ARGS[@]}" "chmod ~/password.txt 600"
+	"${SSH_ARGS[@]}" "echo $SUDO_PASS >> ~/password.txt"
+
 	# Run these bootstrapping scripts in order.
 	SCRIPTS=("scripts/$2/bootstrap.sh")
 	SCRIPTS+=("scripts/bootstrap_common.sh")
@@ -31,6 +37,8 @@ function provision() {
 		echo "Completed '$SCRIPT' bootstrapping."
 		"${SSH_ARGS[@]}" "rm -f ~/tmp.sh"
 	done
+
+	"${SSH_ARGS[@]}" "rm ~/password.txt"
 
 	echo "Provisioning succeeded!"
 }
