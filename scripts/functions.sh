@@ -85,7 +85,10 @@ clone_third_party_ssh() {
 
 	# Update the repository while we're here.
 	pushd "$2" >/dev/null || exit
-	git pull --prune
+
+	# This can fail if HEAD is detached.
+	git pull --prune || true
+
 	git submodule update --init
 	popd >/dev/null || exit
 
@@ -142,5 +145,5 @@ ipv4_addr() {
 }
 
 is_cmd() {
-	type "$1" >/dev/null
+	type "$1" >/dev/null 2>&1
 }
