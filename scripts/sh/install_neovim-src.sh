@@ -1,9 +1,3 @@
-#!/bin/bash
-
-REPO=$(git rev-parse --show-toplevel)
-# shellcheck disable=SC1090,SC1091
-. "$REPO/scripts/common.sh"
-
 if is_cmd nvim; then
 	return
 fi
