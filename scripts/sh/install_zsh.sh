@@ -1,5 +1,5 @@
 install_package zsh
-clone_third_party_github ohmyzsh ohmyzsh
+clone_third_party_github_shallow ohmyzsh ohmyzsh --branch=master
 
 if ! [[ "$SHELL" == *"zsh" ]]; then
 	# Use 'sudo' because chsh will prompt a password regardless.

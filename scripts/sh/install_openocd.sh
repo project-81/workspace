@@ -7,12 +7,9 @@ if is_cmd $PROJECT; then
 	return
 fi
 
-clone_third_party_github raspberrypi $PROJECT
+clone_third_party_github_shallow raspberrypi $PROJECT --branch=rp2040
 
 safe_pushd "$THIRD_PARTY/$PROJECT"
-
-git checkout rp2040
-git pull
 
 ./bootstrap
 if is_rpi; then

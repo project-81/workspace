@@ -25,12 +25,8 @@ fi
 PROJECT=neovim
 VERSION=0.9
 
-clone_third_party_github $PROJECT $PROJECT \
-	--depth=1 --single-branch "release-$VERSION"
+clone_third_party_github_shallow $PROJECT $PROJECT "--branch=release-$VERSION"
 safe_pushd "$THIRD_PARTY/$PROJECT"
-
-git fetch
-git checkout stable
 
 # Build dependencies.
 mkdir -p .deps

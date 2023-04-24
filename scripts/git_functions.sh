@@ -16,7 +16,7 @@ clone_third_party_ssh() {
 	REPO=$1 && shift
 
 	if [ ! -d "$REPO" ]; then
-		git clone "ssh://$USER@$HOST/$PROJECT/$REPO.git" "$@"
+		git clone "$@" "ssh://$USER@$HOST/$PROJECT/$REPO.git"
 		echo "Cloned '$PROJECT/$REPO'."
 	else
 		echo "Not cloning '$PROJECT/$REPO', already present."
@@ -36,4 +36,8 @@ clone_third_party_ssh() {
 
 clone_third_party_github() {
 	clone_third_party_ssh git github.com "$@"
+}
+
+clone_third_party_github_shallow() {
+	clone_third_party_ssh git github.com "$@" --depth=1 --single-branch
 }
