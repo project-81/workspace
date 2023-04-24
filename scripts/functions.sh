@@ -6,9 +6,9 @@ is_cmd() {
 
 sudo_cmd() {
 	if [ -f ~/password.txt ]; then
-		local PASS
-		PASS=$(cat ~/password.txt)
-		echo "$PASS" | sudo -S "$@"
+		local pass
+		pass=$(cat ~/password.txt)
+		echo "$pass" | sudo -S "$@"
 	else
 		sudo "$@"
 	fi
@@ -17,11 +17,11 @@ sudo_cmd() {
 
 safe_pushd() {
 	mkdir -p "$1"
-	pushd "$1" >/dev/null || exit
+	pushd "$1" >/dev/null || exit 1
 }
 
 safe_popd() {
-	popd >/dev/null || exit
+	popd >/dev/null || exit 1
 }
 
 . "$SCRIPTS/platform_functions.sh"

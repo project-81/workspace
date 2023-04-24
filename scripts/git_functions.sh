@@ -7,31 +7,30 @@ github_ssh_url() {
 }
 
 clone_third_party_ssh() {
-	mkdir -p "$THIRD_PARTY"
-	pushd "$THIRD_PARTY" >/dev/null || exit
+	safe_pushd "$THIRD_PARTY"
 
-	local USER=$1 && shift
-	local HOST=$1 && shift
-	local PROJECT=$1 && shift
-	local REPO=$1 && shift
+	local user=$1 && shift
+	local host=$1 && shift
+	local project=$1 && shift
+	local repo=$1 && shift
 
-	if [ ! -d "$REPO" ]; then
-		git clone "$@" "ssh://$USER@$HOST/$PROJECT/$REPO.git"
-		echo "Cloned '$PROJECT/$REPO'."
+	if [ ! -d "$repo" ]; then
+		git clone "$@" "ssh://$user@$host/$project/$repo.git"
+		echo "Cloned '$project/$repo'."
 	else
-		echo "Not cloning '$PROJECT/$REPO', already present."
+		echo "Not cloning '$project/$repo', already present."
 	fi
 
 	# Update the repository while we're here.
-	pushd "$REPO" >/dev/null || exit
+	safe_pushd "$repo"
 
 	# This can fail if HEAD is detached.
 	git pull --prune || true
 
 	git submodule update --init
-	popd >/dev/null || exit
+	safe_popd
 
-	popd >/dev/null || exit
+	safe_popd
 }
 
 clone_third_party_github() {
