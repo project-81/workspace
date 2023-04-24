@@ -1,9 +1,10 @@
+time_if() {
+	if is_cmd time; then time "$@"; else "$@"; fi
+}
+
 run_install() {
 	echo "Starting install script for '$1'."
-
-	# shellcheck disable=SC1090
-	. "$REPO/scripts/sh/install_$1.sh"
-
+	time_if . "$REPO/scripts/sh/install_$1.sh"
 	echo "Install script for '$1' completed."
 }
 
@@ -13,9 +14,9 @@ run_src_install() {
 
 install_package() {
 	if is_opensuse; then
-		sudo_cmd zypper install -y "$1"
+		time_if sudo_cmd zypper install -y "$1"
 	elif is_debian; then
-		sudo_cmd apt-get install -yu "$1"
+		time_if sudo_cmd apt-get install -yu "$1"
 	fi
 }
 
