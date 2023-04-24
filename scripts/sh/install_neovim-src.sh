@@ -22,19 +22,16 @@ VERSION=0.9
 clone_third_party_github_shallow $PROJECT $PROJECT "--branch=release-$VERSION"
 safe_pushd "$THIRD_PARTY/$PROJECT"
 
-export CMAKE_BUILD_TYPE=Release
+# Build dependencies. This isn't necessary?
+# mkdir -p .deps
+# safe_pushd .deps
+# cmake ../cmake.deps
+# make "-j$(nproc)"
+# safe_popd
 
-# Build dependencies.
-mkdir -p .deps
-safe_pushd .deps
-cmake ../cmake.deps
-make "-j$(nproc)"
-safe_popd
-
-make "-j$(nproc)"
-
-sudo make install
-
-unset CMAKE_BUILD_TYPE
+make "-j$(nproc)" \
+	CMAKE_BUILD_TYPE=Release \
+	CMAKE_INSTALL_PREFIX="$INSTALL_PREFIX"
+make install
 
 safe_popd

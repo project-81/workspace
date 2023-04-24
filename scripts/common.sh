@@ -5,8 +5,11 @@ if [ -z "$REPO" ] || [ ! -d "$REPO" ]; then
 	exit 1
 fi
 
-export SCRIPTS="$REPO/scripts"
-export THIRD_PARTY="$HOME/third-party"
+SCRIPTS="$REPO/scripts"
+THIRD_PARTY="$HOME/third-party"
+
+INSTALL_PREFIX="$HOME/.local"
+mkdir -p "$INSTALL_PREFIX"
 
 . "$SCRIPTS/functions.sh"
 . "$SCRIPTS/variables.sh"
