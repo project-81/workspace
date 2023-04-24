@@ -6,13 +6,10 @@ REPO=$(git rev-parse --show-toplevel)
 
 if ! type bmputil >/dev/null; then
 	poke_ssh
-	cargo install --git ssh://git@github.com/blackmagic-debug/bmputil.git
+	cargo install --git "$(github_ssh_url blackmagic-debug bmputil)"
 fi
 
 run_install blackmagic
-
-# Install the udev rule.
-# install_udev_rule "$REPO/config/udev/99-blackmagic.rules"
 
 safe_pushd "$REPO/scripts/raspberrypi"
 

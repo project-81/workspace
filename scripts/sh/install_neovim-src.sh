@@ -23,11 +23,10 @@ if ! is_cmd msgmerge; then
 fi
 
 PROJECT=neovim
-clone_third_party_github $PROJECT $PROJECT
-safe_pushd "$THIRD_PARTY/$PROJECT"
+VERSION=0.9
 
-git fetch
-git checkout stable
+clone_third_party_github_shallow $PROJECT $PROJECT "--branch=release-$VERSION"
+safe_pushd "$THIRD_PARTY/$PROJECT"
 
 # Build dependencies.
 mkdir -p .deps

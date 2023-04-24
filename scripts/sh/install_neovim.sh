@@ -9,7 +9,7 @@ if is_rpi; then
 	# sudo snap install --classic nvim || true
 
 	# Build from source instead.
-	run_install neovim-src
+	run_src_install neovim
 else
 	install_package neovim
 fi
