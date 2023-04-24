@@ -21,6 +21,6 @@ else
 	./configure
 fi
 make "-j$(nproc)"
-sudo make install
+sudo_cmd make install
 
 safe_popd

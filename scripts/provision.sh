@@ -19,9 +19,9 @@ function provision() {
 	URL_BASE=https://raw.githubusercontent.com/$ORG/$REPO/$BRANCH
 
 	# Prompt for sudo password.
-	read -r -p "Password for sudo: " SUDO_PASS
+	read -s -r -p "Password for sudo: " SUDO_PASS
 	"${SSH_ARGS[@]}" "touch ~/password.txt"
-	"${SSH_ARGS[@]}" "chmod ~/password.txt 600"
+	"${SSH_ARGS[@]}" "chmod 600 ~/password.txt"
 	"${SSH_ARGS[@]}" "echo $SUDO_PASS >> ~/password.txt"
 
 	# Run these bootstrapping scripts in order.

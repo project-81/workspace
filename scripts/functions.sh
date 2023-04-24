@@ -41,11 +41,22 @@ run_install() {
 	echo "Install script for '$1' completed."
 }
 
+sudo_cmd() {
+	if [ -f ~/password.txt ]; then
+		local PASS
+		PASS=$(cat ~/password.txt)
+		echo "$PASS" | sudo -S "$@"
+	else
+		sudo "$@"
+	fi
+
+}
+
 install_package() {
 	if is_opensuse; then
-		sudo zypper install -y "$1"
+		sudo_cmd zypper install -y "$1"
 	elif is_debian; then
-		sudo apt-get install -yu "$1"
+		sudo_cmd apt-get install -yu "$1"
 	fi
 }
 
@@ -104,8 +115,9 @@ install_udev_rule() {
 	DEST="$UDEV_DEST/$(basename "$1")"
 
 	if [ ! -L "$DEST" ]; then
-		sudo ln -s "$(realpath "$1")" "$DEST"
-		sudo udevadm control --reload-rules && sudo udevadm trigger
+		sudo_cmd ln -s "$(realpath "$1")" "$DEST"
+		sudo_cmd udevadm control --reload-rules \
+			&& sudo_cmd udevadm trigger
 		echo "Installed udev rule '$DEST'."
 	fi
 }
