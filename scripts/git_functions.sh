@@ -10,10 +10,10 @@ clone_third_party_ssh() {
 	mkdir -p "$THIRD_PARTY"
 	pushd "$THIRD_PARTY" >/dev/null || exit
 
-	USER=$1 && shift
-	HOST=$1 && shift
-	PROJECT=$1 && shift
-	REPO=$1 && shift
+	local USER=$1 && shift
+	local HOST=$1 && shift
+	local PROJECT=$1 && shift
+	local REPO=$1 && shift
 
 	if [ ! -d "$REPO" ]; then
 		git clone "$@" "ssh://$USER@$HOST/$PROJECT/$REPO.git"
