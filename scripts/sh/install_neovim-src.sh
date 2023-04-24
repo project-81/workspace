@@ -1,8 +1,12 @@
 #!/bin/bash
 
 REPO=$(git rev-parse --show-toplevel)
-# shellcheck disable=SC1091
+# shellcheck disable=SC1090,SC1091
 . "$REPO/scripts/common.sh"
+
+if is_cmd nvim; then
+	return
+fi
 
 if ! is_cmd cmake; then
 	if is_opensuse; then
@@ -13,6 +17,8 @@ fi
 if ! is_cmd msgmerge; then
 	if is_opensuse; then
 		install_package gettext-tools
+	else
+		install_package gettext
 	fi
 fi
 
