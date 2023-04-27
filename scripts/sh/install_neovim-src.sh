@@ -5,6 +5,8 @@ fi
 if ! is_cmd cmake; then
 	if is_opensuse; then
 		install_package cmake-full
+	else
+		install_package cmake
 	fi
 fi
 
@@ -14,6 +16,10 @@ if ! is_cmd msgmerge; then
 	else
 		install_package gettext
 	fi
+fi
+
+if ! is_cmd unzip; then
+	install_package unzip
 fi
 
 PROJECT=neovim

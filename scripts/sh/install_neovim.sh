@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if is_rpi; then
+if is_rpi || is_ubuntu; then
 	# 32-bit Raspbian doesn't support squashfs. It seems like only the Pi 4
 	# supports it.
 
@@ -40,5 +40,5 @@ safe_popd
 if is_cmd nvim; then
 	nvim +'PlugInstall --sync' +qa
 elif [ -f "$INSTALL_PREFIX/bin/nvim" ]; then
-	f "$INSTALL_PREFIX/bin/nvim" +'PlugInstall --sync' +qa
+	"$INSTALL_PREFIX/bin/nvim" +'PlugInstall --sync' +qa
 fi

@@ -8,7 +8,7 @@ PROJECT=pi-gen
 
 if is_debian || is_ubuntu; then
 	install_package quilt qemu-user-static debootstrap zerofree \
-		libarchive-tools bc qemu-utils kpartx
+		libarchive-tools bc qemu-utils kpartx zip pigz
 fi
 
 clone_third_party_github_shallow RPi-Distro $PROJECT "--branch=master"

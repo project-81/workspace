@@ -21,7 +21,7 @@ run_src_install() {
 install_package() {
 	if is_opensuse; then
 		time_if sudo_cmd zypper install -y "$@"
-	elif is_debian; then
+	elif is_debian || is_ubuntu; then
 		time_if sudo_cmd apt-get install -yu "$@"
 	fi
 }
