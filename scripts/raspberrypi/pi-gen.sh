@@ -6,8 +6,10 @@ REPO=$(git rev-parse --show-toplevel)
 
 PROJECT=pi-gen
 
-install_package quilt qemu-user-static debootstrap zerofree libarchive-tools \
-	bc qemu-utils kpartx
+if is_debian || is_ubuntu; then
+	install_package quilt qemu-user-static debootstrap zerofree \
+		libarchive-tools bc qemu-utils kpartx
+fi
 
 clone_third_party_github_shallow RPi-Distro $PROJECT "--branch=master"
 safe_pushd "$THIRD_PARTY/$PROJECT"

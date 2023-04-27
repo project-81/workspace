@@ -20,6 +20,10 @@ is_raspbian() {
 	os_id_is "raspbian"
 }
 
+is_ubuntu() {
+	os_id_is "ubuntu"
+}
+
 is_debian() {
 	# Include 'raspbian' in this check for now, too.
 	os_id_is "debian" || is_raspbian
