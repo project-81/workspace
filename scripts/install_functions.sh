@@ -1,5 +1,9 @@
 time_if() {
-	if is_cmd time; then time "$@"; else "$@"; fi
+	if time test; then
+		time "$@"
+	else
+		"$@"
+	fi
 }
 
 run_install() {

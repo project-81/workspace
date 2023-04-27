@@ -12,3 +12,6 @@ if is_opensuse; then
 else
 	PACKAGES+=(shellcheck)
 fi
+
+clone_third_party_github_shallow zsh-users zsh-syntax-highlighting \
+	--branch=master

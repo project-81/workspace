@@ -11,5 +11,8 @@ THIRD_PARTY="$HOME/third-party"
 INSTALL_PREFIX="$HOME/.local"
 mkdir -p "$INSTALL_PREFIX"
 
+PREFIX_ARG="--prefix=$INSTALL_PREFIX"
+test "$PREFIX_ARG"
+
 . "$SCRIPTS/functions.sh"
 . "$SCRIPTS/variables.sh"
