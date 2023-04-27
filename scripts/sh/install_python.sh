@@ -6,7 +6,7 @@ if ! is_cmd pip; then
 		for PKG in base pip; do
 			install_package "python${PYTHON_VERSION/./}-$PKG"
 		done
-	elif is_debian; then
+	elif is_debian || is_ubuntu; then
 		install_package python3-pip
 	fi
 fi
