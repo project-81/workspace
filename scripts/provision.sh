@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function provision() {
 	if [ -z "$1" ]; then
 		echo "Must specify a host."

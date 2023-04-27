@@ -1,3 +1,5 @@
+#!/bin/bash
+
 read_os_release() {
 	grep -oP "(?<=^$1=).+" /etc/os-release | tr -d '"'
 }

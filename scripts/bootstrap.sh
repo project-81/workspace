@@ -33,9 +33,7 @@ else
 fi
 
 # Install basic packages.
-for PKG in "${PACKAGES[@]}"; do
-	install_package "$PKG"
-done
+install_package "${PACKAGES[@]}";
 
 # Run installation tasks.
 for TASK in "${TASKS[@]}"; do
