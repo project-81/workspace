@@ -1,4 +1,7 @@
-install_package zsh
+if ! is_cmd zsh; then
+	install_package zsh
+fi
+
 clone_third_party_github_shallow ohmyzsh ohmyzsh --branch=master
 
 if ! [[ "$SHELL" == *"zsh" ]]; then
