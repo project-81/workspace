@@ -33,7 +33,9 @@ else
 fi
 
 # Install basic packages.
-install_package "${PACKAGES[@]}";
+if [ ${#PACKAGES[@]} -ne 0 ]; then
+	install_package "${PACKAGES[@]}";
+fi
 
 # Run installation tasks.
 for TASK in "${TASKS[@]}"; do

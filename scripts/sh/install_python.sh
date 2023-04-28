@@ -25,6 +25,8 @@ if [ -L "$HOME/venv" ]; then
 	ln -s "$VENV" "$HOME/venv"
 fi
 
+add_if_not "$HOME/venv/bin"
+
 # Install packages.
 pip --version
 pip_install --upgrade -r "$SCRIPTS/python_requirements.txt"
