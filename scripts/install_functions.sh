@@ -37,3 +37,7 @@ install_udev_rule() {
 		echo "Installed udev rule '$DEST'."
 	fi
 }
+
+pip_install() {
+	pip install --user "$@" || "$VENV/bin/pip" install "$@"
+}

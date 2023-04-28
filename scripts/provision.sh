@@ -33,7 +33,8 @@ function provision() {
 	for SCRIPT in "${SCRIPTS[@]}"; do
 		# shellcheck disable=SC2029
 		"${SSH_ARGS[@]}" "curl $URL_BASE/$SCRIPT -so ~/tmp.sh" || \
-			"${SSH_ARGS[@]}" "wget $URL_BASE/$SCRIPT -q -O ~/tmp.sh"
+			"${SSH_ARGS[@]}" \
+			"wget --no-cache -q -O ~/tmp.sh $URL_BASE/$SCRIPT"
 
 		# Run the bootstrapping script.
 		echo "Starting bootstrapping for '$SCRIPT'."

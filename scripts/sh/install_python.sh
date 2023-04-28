@@ -11,6 +11,20 @@ if ! is_cmd pip; then
 	fi
 fi
 
+if is_debian || is_ubuntu; then
+	install_package python3-venv
+fi
+
+# Create a virtual environment.
+if [ -d "$VENV" ]; then
+	"python$PYTHON_VERSION" -m venv "$VENV"
+	"$VENV/bin/pip" install --upgrade pip
+fi
+
+if [ -L "$HOME/venv" ]; then
+	ln -s "$VENV" "$HOME/venv"
+fi
+
 # Install packages.
 pip --version
-pip install --user --upgrade -r "$SCRIPTS/python_requirements.txt"
+pip_install --upgrade -r "$SCRIPTS/python_requirements.txt"

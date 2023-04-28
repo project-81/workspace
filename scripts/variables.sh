@@ -7,5 +7,8 @@ if [ -z "$PYTHON_VERSION" ]; then
 fi
 [ "$GO_VERSION" ] || export GO_VERSION=1.20
 
+VENV="$HOME/venv$PYTHON_VERSION"
+test "$VENV"
+
 UDEV_DEST=/usr/lib/udev/rules.d
 test $UDEV_DEST
