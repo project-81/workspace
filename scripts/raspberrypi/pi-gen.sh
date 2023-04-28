@@ -14,9 +14,10 @@ fi
 clone_third_party_github_shallow RPi-Distro $PROJECT "--branch=master"
 safe_pushd "$THIRD_PARTY/$PROJECT"
 
-NAME=Raspbian
+read -r -p "Hostname? " HOSTNAME
 
-echo "IMG_NAME=$NAME" > config
+NAME=Raspbian-$HOSTNAME
+echo "IMG_NAME-$NAME" > config
 
 add_setting() {
 echo "$1=$2" >> config
@@ -34,9 +35,7 @@ add_setting PUBKEY_SSH_FIRST_USER "\"$(cat "$HOME/.ssh/id_rsa.pub")\""
 add_setting SETFCAP 1
 add_setting STAGE_LIST "\"stage0 stage1 stage2\""
 
-read -r -p "Hostname? " HOSTNAME
 add_setting TARGET_HOSTNAME "$HOSTNAME"
-
 add_setting FIRST_USER_NAME "$USER"
 
 read -r -p "$USER (first user)'s password? " FIRST_USER_PASS
