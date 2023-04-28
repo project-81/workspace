@@ -37,10 +37,12 @@ fi
 safe_popd
 
 # Install (and update) plugins.
-if is_cmd nvim; then
-	nvim +'PlugInstall --sync' +qa
-	nvim +'PlugUpdate --sync' +qa
-elif [ -f "$INSTALL_PREFIX/bin/nvim" ]; then
-	"$INSTALL_PREFIX/bin/nvim" +'PlugInstall --sync' +qa
-	"$INSTALL_PREFIX/bin/nvim" +'PlugUpdate --sync' +qa
+if ! is_ubuntu; then
+	if is_cmd nvim; then
+		nvim +'PlugInstall --sync' +qa
+		nvim +'PlugUpdate --sync' +qa
+	elif [ -f "$INSTALL_PREFIX/bin/nvim" ]; then
+		"$INSTALL_PREFIX/bin/nvim" +'PlugInstall --sync' +qa
+		"$INSTALL_PREFIX/bin/nvim" +'PlugUpdate --sync' +qa
+	fi
 fi
