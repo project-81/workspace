@@ -46,4 +46,8 @@ is_zsh() {
 	[ "$(basename "$(readlink /proc/$$/exe)")" = "zsh" ]
 }
 
+is_interactive() {
+	[[ $- == *i* ]]
+}
+
 export LOADED_FUNCTIONS=1

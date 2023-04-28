@@ -37,7 +37,7 @@ fi
 safe_popd
 
 # Install (and update) plugins.
-if ! is_ubuntu; then
+if is_interactive; then
 	if is_cmd nvim; then
 		nvim +'PlugInstall --sync' +qa
 		nvim +'PlugUpdate --sync' +qa
