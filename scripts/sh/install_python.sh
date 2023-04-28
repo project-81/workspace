@@ -16,12 +16,13 @@ if is_debian || is_ubuntu; then
 fi
 
 # Create a virtual environment.
-if [ -d "$VENV" ]; then
+test "$VENV"
+if [ ! -d "$VENV" ]; then
 	"python$PYTHON_VERSION" -m venv "$VENV"
 	"$VENV/bin/pip" install --upgrade pip
 fi
 
-if [ -L "$HOME/venv" ]; then
+if [ ! -L "$HOME/venv" ]; then
 	ln -s "$VENV" "$HOME/venv"
 fi
 
