@@ -19,3 +19,6 @@ PACKAGES+=(libusb-1.0-0-dev)
 
 # openocd
 PACKAGES+=(automake autoconf texinfo libtool libftdi-dev)
+
+# gdb
+PACKAGES+=(gdb-multiarch)
