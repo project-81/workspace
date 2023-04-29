@@ -1,7 +1,7 @@
 #!/bin/bash
 
 REPO=$(git rev-parse --show-toplevel)
-# shellcheck disable=SC1091
+# shellcheck source=../common.sh
 . "$REPO/scripts/common.sh"
 
 pushd "$THIRD_PARTY/pico-examples" >/dev/null || exit
