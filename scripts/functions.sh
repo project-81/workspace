@@ -46,8 +46,8 @@ is_zsh() {
 	[ "$(basename "$(readlink /proc/$$/exe)")" = "zsh" ]
 }
 
-is_interactive() {
-	[[ $- == *i* ]]
+is_a_tty() {
+	[ "$(tty)" != "not a tty" ]
 }
 
 export LOADED_FUNCTIONS=1
