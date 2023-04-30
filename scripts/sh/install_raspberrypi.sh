@@ -4,7 +4,7 @@ if ! is_rpi; then
 	exit 1
 fi
 
-REPOS=(pico-sdk pico-examples pico-extras pico-playground)
+REPOS=(pico-sdk pico-examples pico-extras pico-playground pico-bootrom)
 REPOS+=(picotool picoprobe)
 REPOS+=(openocd picoprobe)
 
