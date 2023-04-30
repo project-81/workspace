@@ -33,6 +33,12 @@ install_package() {
 	fi
 }
 
+install_package_if_not() {
+	if ! is_cmd "$1"; then
+		install_package "$1"
+	fi
+}
+
 install_udev_rule() {
 	local DEST
 	DEST="$UDEV_DEST/$(basename "$1")"
