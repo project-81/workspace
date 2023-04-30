@@ -13,6 +13,12 @@ mkdir -p "$THIRD_PARTY"
 INSTALL_PREFIX="$HOME/.local"
 mkdir -p "$INSTALL_PREFIX"
 
+# Create the 'autoload' directory if necessary.
+VIM_AUTOLOAD="$HOME/.vim/autoload"
+mkdir -p "$VIM_AUTOLOAD"
+VIM_PLUG="$HOME/.vim/plugged"
+mkdir -p "$VIM_PLUG"
+
 PREFIX_ARG="--prefix=$INSTALL_PREFIX"
 test "$PREFIX_ARG"
 

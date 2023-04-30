@@ -16,10 +16,6 @@ fi
 
 clone_third_party_github junegunn vim-plug
 
-# Create the 'autoload' directory if necessary.
-VIM_AUTOLOAD="$HOME/.vim/autoload"
-mkdir -p "$VIM_AUTOLOAD"
-
 # Ensure that neovim config directory exists.
 mkdir -p "$HOME/.config/nvim"
 
@@ -28,13 +24,7 @@ if [ ! -L "$HOME/.config/nvim/autoload" ]; then
 	ln -s "$VIM_AUTOLOAD" "$HOME/.config/nvim/autoload"
 fi
 
-safe_pushd "$VIM_AUTOLOAD"
-
-if ! [ -L plug.vim ]; then
-	ln -s "$THIRD_PARTY/vim-plug/plug.vim" .
-fi
-
-safe_popd
+install_vim_autoload "$THIRD_PARTY/vim-plug/plug.vim"
 
 # Install (and update) plugins.
 if is_interactive; then
