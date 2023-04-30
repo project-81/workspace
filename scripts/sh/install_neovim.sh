@@ -27,7 +27,7 @@ fi
 install_vim_autoload "$THIRD_PARTY/vim-plug/plug.vim"
 
 # Install (and update) plugins.
-if is_interactive; then
+if is_a_tty; then
 	if is_cmd nvim; then
 		nvim +'PlugInstall --sync' +qa
 		nvim +'PlugUpdate --sync' +qa

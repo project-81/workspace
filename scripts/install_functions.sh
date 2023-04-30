@@ -54,14 +54,20 @@ install_vim_autoload() {
 	safe_popd
 }
 
-manual_install_vim_plugin() {
-	safe_pushd "$VIM_PLUG"
-
-	if [ ! -L "$1" ]; then
-		ln -s "$THIRD_PARTY/$1" .
+install_third_party_link() {
+	safe_pushd "$1"
+	if [ ! -L "$2" ]; then
+		ln -s "$THIRD_PARTY/$2" .
 	fi
-
 	safe_popd
+}
+
+manual_install_vim_plugin() {
+	install_third_party_link "$VIM_PLUG" "$1"
+}
+
+install_local_bin() {
+	install_third_party_link "$INSTALL_PREFIX/bin" "$1"
 }
 
 pip_install() {
