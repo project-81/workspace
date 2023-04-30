@@ -56,8 +56,9 @@ install_vim_autoload() {
 
 install_third_party_link() {
 	safe_pushd "$1"
-	local BASE="$(basename "$2")"
-	if [ ! -L $BASE ] && [ ! -d $BASE ]; then
+	local BASE
+	BASE="$(basename "$2")"
+	if [ ! -L "$BASE" ] && [ ! -d "$BASE" ]; then
 		ln -s "$THIRD_PARTY/$2" .
 	fi
 	safe_popd
