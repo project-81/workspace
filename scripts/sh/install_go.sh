@@ -14,9 +14,7 @@ else
 	fi
 
 	# Need 'wget' to download release.
-	if ! is_cmd wget; then
-		install_package wget
-	fi
+	install_package_if_not wget
 
 	# This is used for downloading pre-built releases.
 	[ "$GO_FULL_VERSION" ] || export GO_FULL_VERSION=$GO_VERSION.3
@@ -25,11 +23,11 @@ else
 	VARIANT=""
 	case $(uname -m) in
 		aarch64)
-			VARIANT=arm64
-			;;
+			VARIANT=arm64;;
 		armv6l)
-			VARIANT=armv6l
-			;;
+			VARIANT=armv6l;;
+		armv7l)
+			VARIANT=armv6l;;
 	esac
 
 	if [ "$VARIANT" ]; then
