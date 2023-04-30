@@ -22,7 +22,7 @@ make FZF_VERSION="custom"
 make install FZF_VERSION="custom"
 
 for ENTRY in ./bin/*; do
-	install_local_bin $PROJECT/$ENTRY
+	install_local_bin "$PROJECT/$ENTRY"
 done
 
 manual_install_vim_plugin $PROJECT
