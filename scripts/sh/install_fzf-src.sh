@@ -17,15 +17,12 @@ fi
 
 safe_pushd "$THIRD_PARTY/$PROJECT"
 
-make
-make install
+# Specify a version because we're not checking out any specific tag.
+make FZF_VERSION="custom"
+make install FZF_VERSION="custom"
 
 for ENTRY in ./bin/*; do
-	BASE=$(basename "$ENTRY")
-	if [ ! -L "$INSTALL_PREFIX/bin/$BASE" ]; then
-		ln -s "$THIRD_PARTY/$PROJECT/bin/$BASE" \
-			"$INSTALL_PREFIX/bin/$BASE"
-	fi
+	install_local_bin $PROJECT/$ENTRY
 done
 
 manual_install_vim_plugin $PROJECT
