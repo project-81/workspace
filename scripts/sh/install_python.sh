@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Install Python.
 test "$PYTHON_VERSION"
 
@@ -18,11 +20,13 @@ fi
 # Create a virtual environment.
 test "$VENV"
 if [ ! -d "$VENV" ]; then
-	"python$PYTHON_VERSION" -m venv "$VENV"
-	"$VENV/bin/pip" install --upgrade pip
+	time_if "python$PYTHON_VERSION" -m venv "$VENV"
+	time_if "$VENV/bin/pip" install --upgrade pip
 fi
 
 if [ ! -L "$HOME/venv" ]; then
+	# Try removing it if it's a directory (it shouldn't be).
+	rm -rf "$HOME/venv"
 	ln -s "$VENV" "$HOME/venv"
 fi
 

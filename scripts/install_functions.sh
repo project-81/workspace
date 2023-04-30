@@ -3,6 +3,7 @@
 time_if() {
 	if { time test 1 ; } >/dev/null 2>&1; then
 		time "$@"
+		echo "Timed command: '$*'."
 	else
 		"$@"
 	fi
@@ -76,8 +77,9 @@ pip_install() {
 	local PIP
 	PIP=$(which pip)
 	if [[ $PIP == *"venv"* ]]; then
-		pip install "$@"
+		time_if pip install "$@"
 	else
-		pip install --user "$@" || "$VENV/bin/pip" install "$@"
+		time_if pip install --user "$@" \
+			|| time_if "$VENV/bin/pip" install "$@"
 	fi
 }
