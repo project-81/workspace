@@ -3,3 +3,4 @@ vmklib
 yamllint
 grip
 meson
+mpremote
