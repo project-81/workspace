@@ -14,6 +14,12 @@ run_install() {
 	echo "Install script for '$1' completed."
 }
 
+run_install_if_not() {
+	if ! is_cmd "$1"; then
+		run_install "$1"
+	fi
+}
+
 run_src_install() {
 	run_install "$1-src"
 }
@@ -36,6 +42,26 @@ install_udev_rule() {
 			&& sudo_cmd udevadm trigger
 		echo "Installed udev rule '$DEST'."
 	fi
+}
+
+install_vim_autoload() {
+	safe_pushd "$VIM_AUTOLOAD"
+
+	if ! [ -L "$(basename "$1")" ]; then
+		ln -s "$1" .
+	fi
+
+	safe_popd
+}
+
+manual_install_vim_plugin() {
+	safe_pushd "$VIM_PLUG"
+
+	if [ ! -L "$1" ]; then
+		ln -s "$THIRD_PARTY/$1" .
+	fi
+
+	safe_popd
 }
 
 pip_install() {
