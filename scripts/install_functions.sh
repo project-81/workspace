@@ -1,7 +1,7 @@
 #!/bin/bash
 
 time_if() {
-	if time test; then
+	if { time test 1 ; } >/dev/null 2>&1; then
 		time "$@"
 	else
 		"$@"
@@ -73,5 +73,11 @@ install_local_bin() {
 }
 
 pip_install() {
-	pip install --user "$@" || "$VENV/bin/pip" install "$@"
+	local PIP
+	PIP=$(which pip)
+	if [[ $PIP == *"venv"* ]]; then
+		pip install "$@"
+	else
+		pip install --user "$@" || "$VENV/bin/pip" install "$@"
+	fi
 }

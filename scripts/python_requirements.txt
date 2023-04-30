@@ -2,3 +2,4 @@ rcmpy>=1.1.1
 vmklib
 yamllint
 grip
+meson
