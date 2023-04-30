@@ -11,7 +11,7 @@ REPOS+=(openocd picoprobe)
 for repo in "${REPOS[@]}"; do
 	clone_third_party_github raspberrypi "$repo"
 done
-TASKS+=(picotool openocd go fzf-src)
+TASKS+=(picotool openocd go fzf-src rust)
 
 PACKAGES+=(cmake gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential)
 PACKAGES+=(libstdc++-arm-none-eabi-newlib)
