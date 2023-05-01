@@ -28,7 +28,12 @@ else
 			VARIANT=armv6l;;
 		armv7l)
 			VARIANT=armv6l;;
+		x86_64)
+			VARIANT=amd64;;
 	esac
+
+	echo "Checking go variant '$VARIANT';"
+	test "$VARIANT"
 
 	if [ "$VARIANT" ]; then
 		GO_RELEASE=go$GO_FULL_VERSION.linux-$VARIANT.tar.gz

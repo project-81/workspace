@@ -13,7 +13,7 @@ if [ ! -L ~/bin/$PROJECT ]; then
 	pushd build >/dev/null || exit
 
 	cmake ..
-	make "-j$(nproc)"
+	make "-j$(nproc)" || ninja
 	ln -s "$(realpath $PROJECT)" ~/bin/$PROJECT
 
 	popd >/dev/null || exit
