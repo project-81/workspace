@@ -4,7 +4,15 @@ in_path() {
 	[[ ":$PATH:" == *":$1:"* ]]
 }
 
-add_if_not() {
+add_end_if_not() {
+	if ! in_path "$1"; then
+		if [ -d "$1" ]; then
+			export PATH="$PATH:$1"
+		fi
+	fi
+}
+
+add_front_if_not() {
 	if ! in_path "$1"; then
 		if [ -d "$1" ]; then
 			export PATH="$1:$PATH"
@@ -12,13 +20,18 @@ add_if_not() {
 	fi
 }
 
+add_if_not() {
+	add_end_if_not "$@"
+}
+
+mkdir -p "$HOME/bin"
+add_front_if_not "$HOME/bin"
+
 mkdir -p "$INSTALL_PREFIX/bin"
-add_if_not "$INSTALL_PREFIX/bin"
+add_front_if_not "$INSTALL_PREFIX/bin"
 
 if [ "$SCRIPTS" ] && [ -d "$SCRIPTS" ] && [ ! -L "$HOME/bin/functions.sh" ]; then
-	mkdir -p "$HOME/bin"
 	ln -s "$SCRIPTS/functions.sh" "$HOME/bin/functions.sh"
-	add_if_not "$HOME/bin"
 fi
 
 is_cmd() {
