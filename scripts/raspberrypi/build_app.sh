@@ -14,7 +14,7 @@ safe_pushd "$THIRD_PARTY/pico-examples"
 safe_pushd build
 
 if [ ! -d "$APP" ]; then
-	cmake -DCMAKE_BUILD_TYPE=Debug ..
+	cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_GENERATOR="Unix Makefiles" ..
 fi
 
 safe_pushd "$APP"
