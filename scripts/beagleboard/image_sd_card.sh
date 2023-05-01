@@ -5,9 +5,8 @@ CARD=/dev/sda
 
 REPO=$(git rev-parse --show-toplevel)
 CWD=$REPO/scripts/beagleboard
-# shellcheck disable=SC1090,SC1091
-. "$CWD/common.sh"
 
+HOST=mycloudex2ultra
 IMAGE_REL="$CWD/$HOST/Users/vkottler/OS Images"
 
 set -e && set -x
