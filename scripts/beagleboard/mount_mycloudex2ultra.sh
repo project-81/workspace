@@ -5,6 +5,8 @@ REPO=$(git rev-parse --show-toplevel)
 . "$REPO/scripts/common.sh"
 
 CWD=$REPO/scripts/beagleboard
+# shellcheck disable=SC1090,SC1091
+. "$CWD/common.sh"
 
 safe_pushd "$CWD"
 
