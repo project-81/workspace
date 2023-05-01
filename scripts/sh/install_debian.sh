@@ -27,7 +27,7 @@ else
 	PACKAGES+=(libusb-dev pkgconf)
 fi
 
-PACKAGES+=(tmux)
+PACKAGES+=(tmux ack htop)
 
 # openocd
 PACKAGES+=(automake autoconf texinfo libtool libftdi-dev)
