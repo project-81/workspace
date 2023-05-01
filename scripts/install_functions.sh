@@ -16,8 +16,12 @@ run_install() {
 }
 
 run_install_if_not() {
+	local TO_INSTALL="$2"
+	if [ -z "$TO_INSTALL" ]; then
+		TO_INSTALL="$1"
+	fi
 	if ! is_cmd "$1"; then
-		run_install "$1"
+		run_install "$TO_INSTALL"
 	fi
 }
 
@@ -34,8 +38,12 @@ install_package() {
 }
 
 install_package_if_not() {
+	local TO_INSTALL="$2"
+	if [ -z "$TO_INSTALL" ]; then
+		TO_INSTALL="$1"
+	fi
 	if ! is_cmd "$1"; then
-		install_package "$1"
+		install_package "$TO_INSTALL"
 	fi
 }
 

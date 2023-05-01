@@ -1,8 +1,4 @@
-if is_rpi; then
-	export PYTHON_VERSION=3.9
-else
-	export PYTHON_VERSION=3.11
-fi
+export PYTHON_VERSION=3.11
 
 [ "$GO_VERSION" ] || export GO_VERSION=1.2
 

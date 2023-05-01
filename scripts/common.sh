@@ -11,7 +11,6 @@ THIRD_PARTY="$HOME/third-party"
 mkdir -p "$THIRD_PARTY"
 
 INSTALL_PREFIX="$HOME/.local"
-mkdir -p "$INSTALL_PREFIX"
 
 # Create the 'autoload' directory if necessary.
 VIM_AUTOLOAD="$HOME/.vim/autoload"

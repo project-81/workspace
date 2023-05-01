@@ -12,6 +12,9 @@ add_if_not() {
 	fi
 }
 
+mkdir -p "$INSTALL_PREFIX/bin"
+add_if_not "$INSTALL_PREFIX/bin"
+
 if [ "$SCRIPTS" ] && [ -d "$SCRIPTS" ] && [ ! -L "$HOME/bin/functions.sh" ]; then
 	mkdir -p "$HOME/bin"
 	ln -s "$SCRIPTS/functions.sh" "$HOME/bin/functions.sh"

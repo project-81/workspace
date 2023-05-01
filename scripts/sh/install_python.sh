@@ -17,6 +17,9 @@ if is_debian || is_ubuntu; then
 	install_package python3-venv
 fi
 
+# If we can't directly install Python, fallback on source building.
+run_install_if_not "python$PYTHON_VERSION" python-src
+
 # Create a virtual environment.
 test "$VENV"
 if [ ! -d "$VENV" ]; then
