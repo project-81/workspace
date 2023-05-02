@@ -18,19 +18,18 @@ for repo in "${REPOS[@]}"; do
 	clone_third_party_github raspberrypi "$repo"
 done
 
+# build tools
 PACKAGES+=(cmake gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential)
 PACKAGES+=(libstdc++-arm-none-eabi-newlib)
 
-if is_rpi; then
+if is_rpi || is_wsl; then
 	PACKAGES+=(libusb-1.0-0-dev)
 else
 	PACKAGES+=(libusb-dev pkgconf)
 fi
 
-PACKAGES+=(tmux ack htop)
-
-# openocd
-PACKAGES+=(automake autoconf texinfo libtool libftdi-dev)
-
 # gdb
 PACKAGES+=(gdb-multiarch)
+
+# utilities
+PACKAGES+=(tmux ack htop)

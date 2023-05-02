@@ -7,6 +7,11 @@ if is_cmd $PROJECT; then
 	return
 fi
 
+# Install system dependencies.
+if is_debian || is_ubuntu; then
+	install_package automake autoconf texinfo libtool libftdi-dev
+fi
+
 clone_third_party_github_shallow raspberrypi $PROJECT --branch=rp2040
 
 safe_pushd "$THIRD_PARTY/$PROJECT"
