@@ -15,6 +15,10 @@ run_install() {
 	echo "Install script for '$1' completed."
 }
 
+run_make() {
+	make "-j$(nproc)" "$@" || make "$@" || ninja "$@"
+}
+
 run_install_if_not() {
 	local TO_INSTALL="$2"
 	if [ -z "$TO_INSTALL" ]; then

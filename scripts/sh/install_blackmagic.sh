@@ -10,7 +10,7 @@ if [ ! -f "$HOME/bin/$PROJECT" ]; then
 		install_package libhidapi-dev
 	fi
 
-	make PROBE_HOST=hosted "-j$(nproc)"
+	run_make PROBE_HOST=hosted
 	cp ./src/$PROJECT "$HOME/bin/"
 
 fi

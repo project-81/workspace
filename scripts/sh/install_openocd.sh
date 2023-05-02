@@ -22,7 +22,7 @@ if is_rpi; then
 else
 	./configure
 fi
-make "-j$(nproc)"
+run_make
 sudo_cmd make install
 
 safe_popd

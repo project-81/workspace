@@ -21,7 +21,7 @@ fi
 	--enable-gdbm \
 	--enable-pcre \
 	--with-tcsetpgrp
-make "-j$(nproc)"
+run_make
 
 # There's a test that requires an existing zsh installation.
 make check || true

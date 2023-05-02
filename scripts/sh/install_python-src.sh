@@ -54,7 +54,7 @@ fi
 safe_pushd "$PYTHON_SRC"
 
 ./configure "$PREFIX_ARG" --enable-optimizations --with-lto=yes
-make "-j$(nproc)"
+run_make
 
 # lists modules / prints missing
 ./python ./setup.py build -n

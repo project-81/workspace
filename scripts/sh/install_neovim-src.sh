@@ -32,10 +32,10 @@ safe_pushd "$THIRD_PARTY/$PROJECT"
 # mkdir -p .deps
 # safe_pushd .deps
 # cmake ../cmake.deps
-# make "-j$(nproc)"
+# run_make
 # safe_popd
 
-make "-j$(nproc)" \
+run_make \
 	CMAKE_BUILD_TYPE=Release \
 	CMAKE_INSTALL_PREFIX="$INSTALL_PREFIX"
 make install
