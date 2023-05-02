@@ -1,6 +1,6 @@
 export PYTHON_VERSION=3.11
 
-[ "$GO_VERSION" ] || export GO_VERSION=1.2
+[ "$GO_VERSION" ] || export GO_VERSION=1.20
 
 VENV="$HOME/venv$PYTHON_VERSION"
 test "$VENV"

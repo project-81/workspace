@@ -17,6 +17,8 @@ fi
 
 safe_pushd "$THIRD_PARTY/$PROJECT"
 
+install_package_if_not make
+
 # Specify a version because we're not checking out any specific tag.
 make FZF_VERSION="custom"
 make install FZF_VERSION="custom"
