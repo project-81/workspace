@@ -32,14 +32,22 @@ else
 	fi
 fi
 
-# Install basic packages.
-if [ ${#PACKAGES[@]} -ne 0 ]; then
-	install_package "${PACKAGES[@]}";
-fi
+install_all_packages() {
+	# Install basic packages.
+	if [ ${#PACKAGES[@]} -ne 0 ]; then
+		install_package "${PACKAGES[@]}";
+	fi
+}
+
+install_all_packages
 
 # Run installation tasks.
 for TASK in "${TASKS[@]}"; do
 	run_install "$TASK"
 done
+
+if [ "$1" ]; then
+	install_all_packages
+fi
 
 echo "Script completed successfully."

@@ -23,6 +23,7 @@ test "$PREFIX_ARG"
 
 # shellcheck source=./functions.sh
 . "$SCRIPTS/functions.sh"
+add_user_paths
 
 # shellcheck source=./platform_functions.sh
 . "$SCRIPTS/platform_functions.sh"
