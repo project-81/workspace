@@ -1,3 +1,8 @@
+test "$PYTHON_VERSION"
+if is_cmd "python$PYTHON_VERSION"; then
+	return
+fi
+
 # Need 'wget' to download release.
 install_package_if_not wget
 
@@ -15,7 +20,9 @@ if is_opensuse; then
 		tk-devel \
 		libbz2-devel \
 		uuid-devel \
-		libuuid-devel
+		libuuid-devel \
+		xz-devel \
+		gdbm-devel
 elif is_debian || is_ubuntu; then
 	install_package \
 		libffi-dev \

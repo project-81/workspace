@@ -1,13 +1,14 @@
 #!/bin/bash
 
 # Install Python.
-test "$PYTHON_VERSION"
 
 if ! is_cmd pip; then
 	if is_opensuse; then
-		for PKG in base pip; do
-			install_package "python${PYTHON_VERSION/./}-$PKG"
-		done
+		# Fall back on source build.
+		# for PKG in base pip; do
+		# 	install_package "python${PYTHON_VERSION/./}-$PKG"
+		# done
+		true
 	elif is_debian || is_ubuntu; then
 		install_package python3-pip
 	fi

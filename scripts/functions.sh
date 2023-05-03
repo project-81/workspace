@@ -35,13 +35,6 @@ add_if_not() {
 	add_end_if_not "$@"
 }
 
-PATH="/bin"
-add_front_if_not "/sbin"
-add_front_if_not "/usr/sbin"
-exit 0
-
-PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:usr/bin"
-
 mkdir -p "$HOME/bin"
 mkdir -p "$INSTALL_PREFIX/bin"
 
