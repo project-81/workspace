@@ -4,10 +4,20 @@ in_path() {
 	[[ ":$PATH:" == *":$1:"* ]]
 }
 
+# Run 'export DEBUG=1' for debug logging.
+[ "$DEBUG" ] || DEBUG=0
+dbg() {
+	if [ ! "$DEBUG" -eq 0 ]; then
+		"$@"
+	fi
+
+}
+
 add_end_if_not() {
 	if ! in_path "$1"; then
 		if [ -d "$1" ]; then
 			export PATH="$PATH:$1"
+			dbg echo "Added '$1' to back of path."
 		fi
 	fi
 }
@@ -16,6 +26,7 @@ add_front_if_not() {
 	if ! in_path "$1"; then
 		if [ -d "$1" ]; then
 			export PATH="$1:$PATH"
+			dbg echo "Added '$1' to front of path."
 		fi
 	fi
 }
@@ -25,10 +36,12 @@ add_if_not() {
 }
 
 mkdir -p "$HOME/bin"
-add_front_if_not "$HOME/bin"
-
 mkdir -p "$INSTALL_PREFIX/bin"
-add_front_if_not "$INSTALL_PREFIX/bin"
+
+add_user_paths() {
+	add_front_if_not "$HOME/bin"
+	add_front_if_not "$INSTALL_PREFIX/bin"
+}
 
 if [ "$SCRIPTS" ] && [ -d "$SCRIPTS" ] && [ ! -L "$HOME/bin/functions.sh" ]; then
 	ln -s "$SCRIPTS/functions.sh" "$HOME/bin/functions.sh"

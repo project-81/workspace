@@ -13,12 +13,5 @@ if ! [[ "$SHELL" == *"zsh" ]]; then
 	sudo_cmd chsh -s "$(which zsh)" "$(whoami)" || true
 fi
 
-if is_opensuse; then
-	# Install ShellCheck.
-	PACKAGES+=(ShellCheck)
-else
-	PACKAGES+=(shellcheck)
-fi
-
 clone_third_party_github_shallow zsh-users zsh-syntax-highlighting \
 	--branch=master

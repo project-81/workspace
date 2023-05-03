@@ -1,3 +1,8 @@
+test "$PYTHON_VERSION"
+if is_cmd "python$PYTHON_VERSION"; then
+	return
+fi
+
 # Need 'wget' to download release.
 install_package_if_not wget
 
@@ -7,14 +12,17 @@ if is_opensuse; then
 		libffi-devel \
 		sqlite3-devel \
 		ncurses-devel \
-		libreadline8 \
+		readline-devel \
 		libbluetooth3 \
 		libarchive-devel \
 		libopenssl-devel \
 		tcl-devel \
 		tk-devel \
 		libbz2-devel \
-		uuid-devel
+		uuid-devel \
+		libuuid-devel \
+		xz-devel \
+		gdbm-devel
 elif is_debian || is_ubuntu; then
 	install_package \
 		libffi-dev \
@@ -55,11 +63,10 @@ safe_pushd "$PYTHON_SRC"
 
 ./configure "$PREFIX_ARG" --enable-optimizations --with-lto=yes
 run_make
+make install
 
 # lists modules / prints missing
 ./python ./setup.py build -n
-
-make install
 
 safe_popd
 

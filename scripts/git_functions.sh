@@ -30,7 +30,7 @@ clone_third_party_ssh() {
 	clone_third_party_ssh_no_update "$@"
 
 	# Update the repository while we're here.
-	safe_pushd "$THIRD_PARTY/$repo"
+	safe_pushd "$THIRD_PARTY/$4"
 
 	# This can fail if HEAD is detached.
 	git pull --prune || true

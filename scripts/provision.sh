@@ -15,9 +15,14 @@ function provision() {
 
 	"${SSH_ARGS[@]}" "rm -f ~/bootstrap.sh"
 
+	if [ -z "$2" ]; then
+		BRANCH=master
+	else
+		BRANCH=$2
+	fi
+
 	ORG=project-81
 	REPO=workspace
-	BRANCH=master
 	URL_BASE=https://raw.githubusercontent.com/$ORG/$REPO/$BRANCH
 
 	# Prompt for sudo password.
