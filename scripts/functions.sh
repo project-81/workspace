@@ -7,7 +7,7 @@ in_path() {
 # Run 'export DEBUG=1' for debug logging.
 [ "$DEBUG" ] || DEBUG=0
 dbg() {
-	if [ ! $DEBUG -eq 0 ]; then
+	if [ ! "$DEBUG" -eq 0 ]; then
 		"$@"
 	fi
 
