@@ -2,7 +2,7 @@
 
 sudo apt-get update && sudo apt-get upgrade -y
 
-TASKS+=(git python micropython rcmpy neovim zsh ninja-src tio)
+TASKS+=(git python micropython circuitpython rcmpy neovim zsh ninja-src tio)
 
 TASKS+=(picotool openocd go fzf-src rust)
 
@@ -32,4 +32,4 @@ fi
 PACKAGES+=(gdb-multiarch)
 
 # utilities
-PACKAGES+=(tmux ack htop)
+PACKAGES+=(tmux ack htop mtools)

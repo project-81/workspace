@@ -1,11 +1,11 @@
+run_install_if_not go
+go version
+
 PROJECT=fzf
 
 if is_cmd $PROJECT; then
 	return
 fi
-
-run_install_if_not go
-go version
 
 # Check if the plugin manager already cloned the repository. If so, we can
 # link it here instead of cloning it.

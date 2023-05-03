@@ -91,6 +91,10 @@ install_local_bin() {
 	install_third_party_link "$INSTALL_PREFIX/bin" "$1"
 }
 
+is_local_bin() {
+	[ -f "$INSTALL_PREFIX/bin/$1" ] || [ -f "$INSTALL_PREFIX/sbin/$1" ]
+}
+
 pip_install() {
 	local PIP
 	PIP=$(which pip)
