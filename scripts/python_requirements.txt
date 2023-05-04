@@ -4,3 +4,4 @@ yamllint
 grip
 meson
 mpremote
+cookiecutter
