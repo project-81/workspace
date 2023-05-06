@@ -1,13 +1,10 @@
-# Find the script, if our PATH isn't updated yet that's okay.
-RCMPY=rcmpy
-if ! is_cmd $RCMPY; then
-	RCMPY=~/.local/bin/$RCMPY
-fi
-
 # Package should be installed via requirements file.
-$RCMPY --version
+rcmpy --version
 
 # Update rcmpy.
-$RCMPY use "$REPO/config/rcmpy"
-$RCMPY variant "$USER"
-$RCMPY apply
+rcmpy use "$REPO/config/rcmpy"
+rcmpy variant "$USER"
+rcmpy apply
+
+# Run userfs.
+ufs fetch --all --update

@@ -5,3 +5,4 @@ grip
 meson
 mpremote
 cookiecutter
+userfs
