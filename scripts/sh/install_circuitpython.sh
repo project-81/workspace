@@ -15,7 +15,7 @@ run_make -C mpy-cross
 
 for PORT in raspberrypi atmel-samd stm; do
 	safe_pushd ports/$PORT
-	run_make
+	run_make || true
 	safe_popd
 done
 
