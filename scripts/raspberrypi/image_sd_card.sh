@@ -1,7 +1,7 @@
 #!/bin/bash
 
 IMAGE=~/2023-04-28-Raspbian-lite.img
-CARD=/dev/sda
+CARD=/dev/sdb
 
 set -e && set -x
 

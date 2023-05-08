@@ -17,7 +17,7 @@ safe_pushd "$THIRD_PARTY/$PROJECT"
 read -r -p "Hostname? " HOSTNAME
 
 NAME=Raspbian-$HOSTNAME
-echo "IMG_NAME-$NAME" > config
+echo "IMG_NAME=$NAME" > config
 
 add_setting() {
 echo "$1=$2" >> config
@@ -42,11 +42,20 @@ read -r -p "$USER (first user)'s password? " FIRST_USER_PASS
 add_setting FIRST_USER_PASS "$FIRST_USER_PASS"
 add_setting DISABLE_FIRST_BOOT_USER_RENAME 1
 
+# Wifi stuff.
+read -r -p "Wifi password? " WIFI_PASS
+if [ "$WIFI_PASS" ] && [ ! "$WIFI_PASS" = "n" ]; then
+	add_setting WPA_COUNTRY US
+	add_setting WPA_ESSID "\"Tya Office\""
+	add_setting WPA_PASSWORD "$WIFI_PASS"
+fi
+
 time_if sudo ./build.sh -c config
 
 safe_popd
 
 # Link the output here.
 CWD="$SCRIPTS/raspberrypi"
-rm -f "$CWD/export-image"
-ln -s "$THIRD_PARTY/$PROJECT/work/$NAME" "$CWD/$NAME"
+if [ ! -L "$CWD/$NAME" ]; then
+	ln -s "$THIRD_PARTY/$PROJECT/work/$NAME" "$CWD/$NAME"
+fi
