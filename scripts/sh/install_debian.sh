@@ -2,21 +2,14 @@
 
 sudo apt-get update && sudo apt-get upgrade -y
 
-TASKS+=(git python micropython circuitpython rcmpy neovim zsh ninja-src tio)
+# micropython circuitpython
+TASKS+=(git python rcmpy neovim zsh ninja-src tio)
 
-TASKS+=(picotool openocd go fzf-src rust)
+TASKS+=(picotool go fzf-src rust)
 
 if is_rpi; then
 	run_install raspberrypi
 fi
-
-REPOS=(pico-sdk pico-examples pico-extras pico-playground pico-bootrom)
-REPOS+=(picotool picoprobe)
-REPOS+=(openocd picoprobe)
-
-for repo in "${REPOS[@]}"; do
-	clone_third_party_github raspberrypi "$repo"
-done
 
 # build tools
 PACKAGES+=(cmake gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential)
