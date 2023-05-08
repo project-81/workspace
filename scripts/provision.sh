@@ -15,10 +15,10 @@ function provision() {
 
 	"${SSH_ARGS[@]}" "rm -f ~/bootstrap.sh"
 
-	if [ -z "$2" ]; then
+	if [ -z "$3" ]; then
 		BRANCH=master
 	else
-		BRANCH=$2
+		BRANCH=$3
 	fi
 
 	ORG=project-81
@@ -36,10 +36,14 @@ function provision() {
 	SCRIPTS+=("scripts/bootstrap_common.sh")
 
 	for SCRIPT in "${SCRIPTS[@]}"; do
+		set -x
+
 		# shellcheck disable=SC2029
 		"${SSH_ARGS[@]}" "curl $URL_BASE/$SCRIPT -so ~/tmp.sh" || \
 			"${SSH_ARGS[@]}" \
 			"wget --no-cache -q -O ~/tmp.sh $URL_BASE/$SCRIPT"
+
+		set +x
 
 		# Run the bootstrapping script.
 		echo "Starting bootstrapping for '$SCRIPT'."
