@@ -1,0 +1,5 @@
+.*_cache
+venv*
+__pycache__
+*.pyc
+tags
