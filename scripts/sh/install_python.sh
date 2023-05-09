@@ -28,6 +28,9 @@ if [ ! -d "$VENV" ]; then
 	time_if "$VENV/bin/pip" install --upgrade pip
 fi
 
+# Always re-create the symbolic link.
+rm -f "$HOME/venv"
+
 if [ ! -L "$HOME/venv" ]; then
 	# Try removing it if it's a directory (it shouldn't be).
 	rm -rf "$HOME/venv"
@@ -37,5 +40,5 @@ fi
 add_if_not "$HOME/venv/bin"
 
 # Install packages.
-pip --version
-pip_install --upgrade -r "$SCRIPTS/python_requirements.txt"
+"$HOME/venv/bin/pip" --version
+"$HOME/venv/bin/pip" install --upgrade -r "$SCRIPTS/python_requirements.txt"
