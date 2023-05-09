@@ -61,8 +61,14 @@ fi
 
 safe_pushd "$PYTHON_SRC"
 
-./configure "$PREFIX_ARG" --enable-optimizations --with-lto=yes
-run_make
+if is_rpi; then
+	# Pi needs too much memory to handle optimizations and parallel builds.
+	./configure "$PREFIX_ARG"
+	make
+else
+	./configure "$PREFIX_ARG" --enable-optimizations --with-lto=yes
+	run_make
+fi
 make install
 
 # lists modules / prints missing

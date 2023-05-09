@@ -7,6 +7,10 @@ function provision() {
 
 	await_pingable "$1"
 
+	# Remove this host as known (in case we're re-provisioning an existing
+	# host).
+	ssh-keygen -R "$1" -f ~/.ssh/known_hosts
+
 	# Add ssh keys.
 	add_ssh_keys.sh "$1"
 
