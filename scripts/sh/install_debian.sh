@@ -25,4 +25,4 @@ fi
 PACKAGES+=(gdb-multiarch)
 
 # utilities
-PACKAGES+=(tmux ack htop mtools shellcheck)
+PACKAGES+=(tmux ack htop mtools shellcheck tree)
