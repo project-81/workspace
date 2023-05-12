@@ -1,0 +1,9 @@
+---
+- hosts: dev
+  tasks:
+    - name: vcorelib
+      git:
+        repo: git@github.com:vkottler/vcorelib.git
+        dest: ~/tmp/repos/
+        clone: true
+        update: true

@@ -63,10 +63,12 @@ safe_pushd "$PYTHON_SRC"
 
 if is_rpi; then
 	# Pi needs too much memory to handle optimizations and parallel builds.
-	./configure "$PREFIX_ARG"
+	./configure "$PREFIX_ARG" \
+		--enable-shared
 	make
 else
-	./configure "$PREFIX_ARG" --enable-optimizations --with-lto=yes
+	./configure "$PREFIX_ARG" \
+		--enable-shared --enable-optimizations --with-lto=yes
 	run_make
 fi
 make install

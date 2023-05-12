@@ -1,0 +1,9 @@
+---
+- import_playbook: includes/dev.yaml
+- import_playbook: includes/storage.yaml
+- import_playbook: includes/ubuntu.yaml
+
+- hosts: all
+  tasks:
+    - name: test
+      command: whoami

@@ -1,0 +1,18 @@
+---
+dev:
+  hosts:
+    kottler-nas: {}
+    nuc2.local: {}
+    vkottler-zbook: {}
+
+storage:
+  hosts:
+    zima1: {}
+    kottler-nas: {}
+
+ubuntu:
+  hosts:
+    zima1: {}
+    kottler-nas: {}
+    nuc2.local: {}
+    vkottler-zbook: {}
