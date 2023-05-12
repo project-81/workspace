@@ -14,7 +14,9 @@ fi
 # build tools
 PACKAGES+=(cmake gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential)
 PACKAGES+=(libstdc++-arm-none-eabi-newlib)
-PACKAGES+=(autoconf automake)
+
+# gnu
+PACKAGES+=(autoconf automake flex bison help2man gawk libtool-bin)
 
 if is_rpi || is_wsl; then
 	PACKAGES+=(libusb-1.0-0-dev)
