@@ -16,3 +16,8 @@ VENV_BIN = VENV.joinpath("bin")
 # Full paths to programs that should be used instead of allowing PATH to
 # resolve them.
 PROGS = {"pip": VENV_BIN.joinpath("pip")}
+
+
+def is_local_bin(program: str) -> bool:
+    """Determine if a binary or entry script is installed locally."""
+    return PREFIX.joinpath("bin", program).is_file()
