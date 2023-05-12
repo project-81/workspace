@@ -4,7 +4,15 @@ PROJECT=picotool
 
 # Ensure PICO_SDK_PATH is set (and is present).
 [ "$PICO_SDK_PATH" ] || export PICO_SDK_PATH="$THIRD_PARTY/pico-sdk"
+
+# Ensure repositories are checked out.
+REPOS=(pico-sdk picotool)
+for repo in "${REPOS[@]}"; do
+	clone_third_party_github raspberrypi "$repo"
+done
+
 test -d "$PICO_SDK_PATH"
+test -d "$THIRD_PARTY/$PROJECT"
 
 pushd "$THIRD_PARTY/$PROJECT" >/dev/null || exit
 
