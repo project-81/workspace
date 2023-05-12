@@ -12,16 +12,19 @@ from userfs.config import ProjectSpecification
 from vcorelib.paths.context import in_dir
 
 # internal
-from hooks_common import MAKE_NPROCS, PREFIX_ARGS
+from hooks_common import MAKE_NPROCS, PREFIX_ARGS, is_local_bin
 
 
-def pre_build(
+def post_fetch(
     root: Path,
     project: ProjectSpecification,
     _: Dict[str, Any],
     __: Dict[str, Any],
 ) -> None:
     """Project interaction."""
+
+    if is_local_bin("ct-ng"):
+        return
 
     with in_dir(project.location(root=root)):
         # Check if we need to bootstrap.
