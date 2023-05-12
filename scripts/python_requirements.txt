@@ -1,5 +1,6 @@
 rcmpy>=1.1.1
 vmklib
+vcorelib>=1.6.3
 yamllint
 grip
 meson

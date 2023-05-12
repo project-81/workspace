@@ -44,7 +44,7 @@ elif is_debian || is_ubuntu; then
 fi
 
 # This is used for downloading pre-built releases.
-[ "$PYTHON_FULL_VERSION" ] || export PYTHON_FULL_VERSION=$PYTHON_VERSION.3
+[ "$PYTHON_FULL_VERSION" ] || export PYTHON_FULL_VERSION="$PYTHON_VERSION.3"
 
 PYTHON_SRC_ARCHIVE="v$PYTHON_FULL_VERSION.tar.gz"
 PYTHON_SRC="cpython-$PYTHON_FULL_VERSION"
@@ -63,15 +63,13 @@ safe_pushd "$PYTHON_SRC"
 
 if is_rpi; then
 	# Pi needs too much memory to handle optimizations and parallel builds.
-	./configure "$PREFIX_ARG" \
-		--enable-shared
+	./configure --enable-shared
 	make
 else
-	./configure "$PREFIX_ARG" \
-		--enable-shared --enable-optimizations --with-lto=yes
+	./configure --enable-shared --enable-optimizations --with-lto=yes
 	run_make
 fi
-make install
+sudo_cmd make altinstall
 
 # lists modules / prints missing
 ./python ./setup.py build -n
