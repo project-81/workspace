@@ -71,6 +71,9 @@ else
 fi
 sudo_cmd make altinstall
 
+# Ensure the newly installed shared libraries can be located.
+sudo_cmd ldconfig
+
 # lists modules / prints missing
 ./python ./setup.py build -n
 
