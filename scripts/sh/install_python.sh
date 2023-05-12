@@ -5,7 +5,7 @@
 if ! is_cmd pip; then
 	if is_opensuse; then
 		# Fall back on source build.
-		# for PKG in base pip; do
+		# for PKG in base pip devel; do
 		# 	install_package "python${PYTHON_VERSION/./}-$PKG"
 		# done
 		true
