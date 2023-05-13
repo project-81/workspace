@@ -10,3 +10,4 @@ userfs
 ruff
 black
 isort
+wheel

@@ -8,4 +8,6 @@ TASKS+=(neovim rcmpy ninja-src tio rust)
 
 PACKAGES+=(tmux htop tree rsync psmisc ack mtools graphviz)
 PACKAGES+=(gcc make autoconf bison flex makeinfo help2man patch libtool)
-PACKAGES+=(ShellCheck universal-ctags)
+
+# unused: swig
+PACKAGES+=(ShellCheck universal-ctags dtc)

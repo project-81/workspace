@@ -5,7 +5,9 @@ Common methods and definitions for project hooks.
 # built-in
 from multiprocessing import cpu_count
 from pathlib import Path
+from sys import version_info
 
+PYTHON = f"python{version_info.major}.{version_info.minor}"
 PREFIX = Path.home().joinpath(".local")
 PREFIX_ARGS = f"--prefix={PREFIX}"
 MAKE_NPROCS = f"-j{cpu_count()}"

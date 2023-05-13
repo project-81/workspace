@@ -18,6 +18,9 @@ PACKAGES+=(libstdc++-arm-none-eabi-newlib)
 # gnu
 PACKAGES+=(autoconf automake texinfo flex bison help2man gawk libtool-bin)
 
+# unused: swig
+PACKAGES+=(device-tree-compiler)
+
 if is_rpi || is_wsl; then
 	PACKAGES+=(libusb-1.0-0-dev)
 else
