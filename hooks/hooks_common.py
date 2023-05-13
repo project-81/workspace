@@ -20,6 +20,19 @@ VENV_BIN = VENV.joinpath("bin")
 PROGS = {"pip": VENV_BIN.joinpath("pip")}
 
 
+def local_bin(program: str) -> Path:
+    """Get the path to a local binary."""
+    return PREFIX.joinpath("bin", program)
+
+
 def is_local_bin(program: str) -> bool:
     """Determine if a binary or entry script is installed locally."""
-    return PREFIX.joinpath("bin", program).is_file()
+    return local_bin(program).is_file()
+
+
+def link_local_bin(path: Path) -> None:
+    """Link a local binary from some arbitrary location."""
+
+    prog = path.name
+    if not is_local_bin(prog):
+        local_bin(prog).symlink_to(path.resolve())
