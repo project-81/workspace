@@ -17,6 +17,8 @@ test -d "$THIRD_PARTY/$PROJECT"
 pushd "$THIRD_PARTY/$PROJECT" >/dev/null || exit
 
 if [ ! -L ~/bin/$PROJECT ]; then
+	install_package libusb-1.0-0-dev
+
 	mkdir -p build
 	pushd build >/dev/null || exit
 
