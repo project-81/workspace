@@ -11,3 +11,4 @@ ruff
 black
 isort
 wheel
+yambs
