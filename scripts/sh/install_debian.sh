@@ -21,8 +21,8 @@ PACKAGES+=(autoconf automake texinfo flex bison help2man gawk libtool-bin)
 # unused: swig
 PACKAGES+=(device-tree-compiler pkgconf libncurses-dev)
 
-# gdb
-PACKAGES+=(gdb-multiarch)
+# gdb and other dev tooling
+PACKAGES+=(gdb-multiarch lcov)
 
 # utilities
 PACKAGES+=(tmux ack htop mtools shellcheck tree)
