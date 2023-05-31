@@ -12,3 +12,6 @@ black
 isort
 wheel
 yambs
+
+attrdict3
+wxPython
