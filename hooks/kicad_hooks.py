@@ -26,6 +26,9 @@ def post_fetch(
     if is_local_bin(project.repository):
         return
 
+    run_process(project.logger, ["pip", "install", "attrdict3"])
+    run_process(project.logger, ["pip", "install", "wxPython"])
+
     with in_dir(project.location(root=root)):
         build = Path("build")
         release = build.joinpath("release")
