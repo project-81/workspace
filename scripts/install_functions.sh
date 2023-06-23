@@ -38,6 +38,8 @@ install_package() {
 		time_if sudo_cmd zypper install -y "$@"
 	elif is_debian || is_ubuntu; then
 		time_if sudo_cmd apt-get install -yu "$@"
+	elif is_centos; then
+		time_if sudo_cmd yum install -y "$@"
 	fi
 }
 

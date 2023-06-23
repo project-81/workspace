@@ -29,6 +29,8 @@ else
 		run_install opensuse
 	elif is_debian || is_ubuntu; then
 		run_install debian
+	elif is_centos; then
+		run_install centos
 	fi
 fi
 

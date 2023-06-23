@@ -24,6 +24,10 @@ is_ubuntu() {
 	os_id_is "ubuntu"
 }
 
+is_centos() {
+	os_id_is "centos"
+}
+
 is_debian() {
 	# Include 'raspbian' in this check for now, too.
 	os_id_is "debian" || is_raspbian
