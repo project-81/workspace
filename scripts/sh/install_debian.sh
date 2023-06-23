@@ -28,8 +28,8 @@ PACKAGES+=(gdb-multiarch lcov)
 # utilities
 PACKAGES+=(tmux ack htop mtools shellcheck tree)
 
-# stuff for kicad
 if ! is_rpi; then
+	# stuff for kicad
 	PACKAGES+=(libglu1-mesa-dev libgl1-mesa-dev libglew-dev libglm-dev)
 	PACKAGES+=(libcurl4-openssl-dev libcairo2-dev libboost-all-dev)
 
@@ -45,4 +45,7 @@ if ! is_rpi; then
 	PACKAGES+=(swig4.0 unixodbc-dev)
 
 	PACKAGES+=(libwxgtk3.2-dev libgtk-3-dev)
+
+	# stuff for lcov
+	PACKAGES+=(libcapture-tiny-perl libdatetime-perl)
 fi
