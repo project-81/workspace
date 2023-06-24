@@ -29,22 +29,25 @@ PACKAGES+=(gdb-multiarch lcov)
 PACKAGES+=(tmux ack htop mtools shellcheck tree)
 
 if ! is_rpi; then
-	# stuff for kicad
-	PACKAGES+=(libglu1-mesa-dev libgl1-mesa-dev libglew-dev libglm-dev)
-	PACKAGES+=(libcurl4-openssl-dev libcairo2-dev libboost-all-dev)
+	if ! is_wsl; then
+		# stuff for kicad
+		PACKAGES+=(libglu1-mesa-dev libgl1-mesa-dev libglew-dev)
+		PACKAGES+=(libglm-dev)
+		PACKAGES+=(libcurl4-openssl-dev libcairo2-dev libboost-all-dev)
 
-	PACKAGES+=(libharfbuzz-dev libngspice0-dev)
+		PACKAGES+=(libharfbuzz-dev libngspice0-dev)
 
-	PACKAGES+=(libocct-modeling-algorithms-dev)
-	PACKAGES+=(libocct-modeling-data-dev)
-	PACKAGES+=(libocct-data-exchange-dev)
-	PACKAGES+=(libocct-visualization-dev)
-	PACKAGES+=(libocct-foundation-dev)
-	PACKAGES+=(libocct-ocaf-dev)
+		PACKAGES+=(libocct-modeling-algorithms-dev)
+		PACKAGES+=(libocct-modeling-data-dev)
+		PACKAGES+=(libocct-data-exchange-dev)
+		PACKAGES+=(libocct-visualization-dev)
+		PACKAGES+=(libocct-foundation-dev)
+		PACKAGES+=(libocct-ocaf-dev)
 
-	PACKAGES+=(swig4.0 unixodbc-dev)
+		PACKAGES+=(swig4.0 unixodbc-dev)
 
-	PACKAGES+=(libwxgtk3.2-dev libgtk-3-dev)
+		PACKAGES+=(libwxgtk3.2-dev libgtk-3-dev)
+	fi
 
 	# stuff for lcov
 	PACKAGES+=(libcapture-tiny-perl libdatetime-perl)
