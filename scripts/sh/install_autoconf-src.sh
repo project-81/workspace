@@ -19,7 +19,7 @@ fi
 
 safe_pushd "$PROJECT-$VERSION"
 
-./configure $PREFIX_ARG
+./configure "$PREFIX_ARG"
 run_make
 make install
 
