@@ -23,7 +23,7 @@ PACKAGES+=(device-tree-compiler pkgconf libncurses-dev)
 
 
 # gdb and other dev tooling
-PACKAGES+=(gdb-multiarch lcov)
+PACKAGES+=(gdb-multiarch lcov clang)
 
 # utilities
 PACKAGES+=(tmux ack htop mtools shellcheck tree)
