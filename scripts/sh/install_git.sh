@@ -7,5 +7,7 @@ fi
 
 git version
 
-# If we're not in the workspace, it's okay if this fails.
-git submodule update --init --recursive || true
+if [ ! -f "$REPO/config/README.md" ]; then
+	# If we're not in the workspace, it's okay if this fails.
+	git submodule update --init --recursive || true
+fi

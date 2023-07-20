@@ -1,6 +1,7 @@
 PROJECT=autoconf
 
-if is_cmd $PROJECT; then
+# Can't check 'is_cmd' because the system version may be old.
+if [ -f "$INSTALL_PREFIX/bin/$PROJECT" ]; then
 	return
 fi
 
