@@ -4,3 +4,6 @@
 [submodule "config"]
 	path = config
 	url = git@github.com:project-81/config.git
+[submodule "vkottler_config"]
+	path = vkottler_config
+	url = git@github.com:vkottler/config.git
