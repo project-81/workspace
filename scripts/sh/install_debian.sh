@@ -13,7 +13,7 @@ fi
 
 # build tools
 PACKAGES+=(cmake gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential)
-PACKAGES+=(libstdc++-arm-none-eabi-newlib mold)
+PACKAGES+=(libstdc++-arm-none-eabi-newlib mold gcc-12 g++-12)
 
 # gnu
 PACKAGES+=(autoconf automake texinfo flex bison help2man gawk libtool-bin)
@@ -23,7 +23,7 @@ PACKAGES+=(device-tree-compiler pkgconf libncurses-dev)
 
 
 # gdb and other dev tooling
-PACKAGES+=(gdb-multiarch lcov clang clang-format)
+PACKAGES+=(gdb-multiarch lcov clang clang-15 clang-format clang-format-15)
 
 # utilities
 PACKAGES+=(tmux ack htop mtools shellcheck tree)
