@@ -46,7 +46,10 @@ if ! is_rpi; then
 
 		PACKAGES+=(swig4.0 unixodbc-dev)
 
-		PACKAGES+=(libwxgtk3.2-dev libgtk-3-dev)
+		# We may need to figure this out at some point.
+		if ! is_pop; then
+			PACKAGES+=(libwxgtk3.2-dev libgtk-3-dev)
+		fi
 	fi
 
 	# stuff for lcov
