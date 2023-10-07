@@ -20,8 +20,12 @@ is_raspbian() {
 	os_id_is "raspbian"
 }
 
+is_pop() {
+	os_id_is "pop"
+}
+
 is_ubuntu() {
-	os_id_is "ubuntu"
+	os_id_is "ubuntu" || is_pop
 }
 
 is_centos() {

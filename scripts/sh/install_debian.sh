@@ -13,7 +13,7 @@ fi
 
 # build tools
 PACKAGES+=(cmake gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential)
-PACKAGES+=(libstdc++-arm-none-eabi-newlib mold)
+PACKAGES+=(libstdc++-arm-none-eabi-newlib mold gcc-12 g++-12)
 
 # gnu
 PACKAGES+=(autoconf automake texinfo flex bison help2man gawk libtool-bin)
@@ -23,7 +23,7 @@ PACKAGES+=(device-tree-compiler pkgconf libncurses-dev)
 
 
 # gdb and other dev tooling
-PACKAGES+=(gdb-multiarch lcov clang clang-format)
+PACKAGES+=(gdb-multiarch lcov clang clang-15 clang-format clang-format-15)
 
 # utilities
 PACKAGES+=(tmux ack htop mtools shellcheck tree)
@@ -46,7 +46,10 @@ if ! is_rpi; then
 
 		PACKAGES+=(swig4.0 unixodbc-dev)
 
-		PACKAGES+=(libwxgtk3.2-dev libgtk-3-dev)
+		# We may need to figure this out at some point.
+		if ! is_pop; then
+			PACKAGES+=(libwxgtk3.2-dev libgtk-3-dev)
+		fi
 	fi
 
 	# stuff for lcov
