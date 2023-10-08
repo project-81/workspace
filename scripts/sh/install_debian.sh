@@ -54,4 +54,5 @@ if ! is_rpi; then
 
 	# stuff for lcov
 	PACKAGES+=(libcapture-tiny-perl libdatetime-perl)
+	PACKAGES+=(doxygen)
 fi
