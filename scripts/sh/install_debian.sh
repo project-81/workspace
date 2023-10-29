@@ -3,7 +3,7 @@
 sudo apt-get update && sudo apt-get upgrade -y
 
 # micropython circuitpython
-TASKS+=(git python rcmpy neovim zsh ninja-src tio)
+TASKS+=(git python rcmpy neovim zsh ninja-src tio clang)
 
 TASKS+=(picotool go fzf-src rust)
 
@@ -13,7 +13,7 @@ fi
 
 # build tools
 PACKAGES+=(cmake gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential)
-PACKAGES+=(libstdc++-arm-none-eabi-newlib mold gcc-12 g++-12)
+PACKAGES+=(libstdc++-arm-none-eabi-newlib mold gcc-13 g++-13)
 
 # gnu
 PACKAGES+=(autoconf automake texinfo flex bison help2man gawk libtool-bin)
@@ -21,9 +21,8 @@ PACKAGES+=(autoconf automake texinfo flex bison help2man gawk libtool-bin)
 # unused: swig
 PACKAGES+=(device-tree-compiler pkgconf libncurses-dev)
 
-
 # gdb and other dev tooling
-PACKAGES+=(gdb-multiarch lcov clang clang-15 clang-format clang-format-15)
+PACKAGES+=(gdb-multiarch lcov)
 
 # utilities
 PACKAGES+=(tmux ack htop mtools shellcheck tree)
