@@ -13,7 +13,11 @@ fi
 
 # build tools
 PACKAGES+=(cmake gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential)
-PACKAGES+=(libstdc++-arm-none-eabi-newlib mold gcc-13 g++-13)
+PACKAGES+=(libstdc++-arm-none-eabi-newlib mold)
+if ! is_rpi; then
+	PACKAGES+=(gcc-13 g++-13)
+fi
+
 PACKAGES+=(emscripten)
 
 # gnu
