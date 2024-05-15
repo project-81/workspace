@@ -12,7 +12,9 @@ LUA_SLUG=$LUA_VER.$LUA_RELEASE
 # export LUA_CPATH="?.so;$LUA_DIR/?.so"
 # export LUA_PATH="?.$PROJECT;$LUA_DIR/?.$PROJECT"
 
-if ! is_cmd $PROJECT; then
+PKG_CONF_DIR=/usr/local/lib/pkgconfig
+
+if [ ! -f $PKG_CONF_DIR/$LUA_VER.pc ]; then
 	safe_pushd "$THIRD_PARTY"
 
 	if [ ! -d $LUA_SLUG ]; then
@@ -32,6 +34,6 @@ if ! is_cmd $PROJECT; then
 	safe_popd
 
 	# Copy custom pkgconf file.
-	sudo_cmd mkdir -p /usr/local/lib/pkgconfig
-	sudo_cmd cp "$REPO/data/$LUA_VER.pc" /usr/local/lib/pkgconfig
+	sudo_cmd mkdir -p $PKG_CONF_DIR
+	sudo_cmd cp "$REPO/data/$LUA_VER.pc" $PKG_CONF_DIR
 fi
