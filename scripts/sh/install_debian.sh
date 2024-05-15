@@ -3,7 +3,7 @@
 sudo apt-get update && sudo apt-get upgrade -y
 
 # micropython circuitpython
-TASKS+=(locale git python rcmpy pkgconf lua neovim zsh ninja-src clang)
+TASKS+=(locale git python rcmpy pkgconf lua neovim zsh ninja-src tio)
 
 TASKS+=(picotool go fzf-src rust)
 
@@ -38,7 +38,7 @@ fi
 
 if ! is_rpi; then
 	# ubuntu seems to be required
-	TASKS+=(tio)
+	TASKS+=(clang)
 
 	if ! is_wsl; then
 		# stuff for kicad
