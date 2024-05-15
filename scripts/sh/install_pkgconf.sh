@@ -1,13 +1,18 @@
 #!/bin/bash
 
 PROJECT=pkgconf
+VERSION=2.2.0
+
+if is_ubuntu || is_rpi; then
+	sudo_cmd apt-get remove pkgconf pkg-config
+fi
 
 if ! is_cmd $PROJECT; then
 	clone_third_party_github $PROJECT $PROJECT
 
 	safe_pushd "$THIRD_PARTY/$PROJECT"
 
-	git checkout $PROJECT-2.2.0
+	git checkout $PROJECT-$VERSION
 
 	if [ ! -f configure ]; then
 		./autogen.sh
