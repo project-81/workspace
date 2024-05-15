@@ -76,7 +76,7 @@ sudo_cmd make altinstall
 sudo_cmd ldconfig
 
 # lists modules / prints missing
-./python ./setup.py build -n
+./python ./setup.py build -n || true
 
 safe_popd
 
