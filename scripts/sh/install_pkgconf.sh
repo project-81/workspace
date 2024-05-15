@@ -4,7 +4,8 @@ PROJECT=pkgconf
 VERSION=2.2.0
 
 if is_ubuntu || is_rpi; then
-	sudo_cmd apt-get remove pkgconf pkg-config
+	sudo_cmd apt-get remove -y pkgconf pkg-config
+	sudo_cmd apt-get autoremove -y
 fi
 
 if ! is_cmd $PROJECT; then
