@@ -3,9 +3,9 @@
 sudo apt-get update && sudo apt-get upgrade -y
 
 # micropython circuitpython
-TASKS+=(git python rcmpy pkgconf lua neovim zsh ninja-src tio clang)
+TASKS+=(locale git python rcmpy pkgconf lua neovim zsh ninja-src tio)
 
-TASKS+=(picotool go fzf-src rust locale)
+TASKS+=(picotool go fzf-src rust)
 
 if is_rpi; then
 	run_install raspberrypi
@@ -13,7 +13,11 @@ fi
 
 # build tools
 PACKAGES+=(cmake gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential)
-PACKAGES+=(libstdc++-arm-none-eabi-newlib mold gcc-13 g++-13)
+PACKAGES+=(libstdc++-arm-none-eabi-newlib mold)
+if ! is_rpi; then
+	PACKAGES+=(gcc-13 g++-13)
+fi
+
 PACKAGES+=(emscripten)
 
 # gnu
@@ -28,14 +32,14 @@ PACKAGES+=(gdb-multiarch lcov)
 # utilities
 PACKAGES+=(tmux ack htop mtools shellcheck tree xdg-utils)
 
-# needed by tio
-PACKAGES+=(libglib2.0-dev)
-
 if is_wsl; then
 	PACKAGES+=(wslu)
 fi
 
 if ! is_rpi; then
+	# ubuntu seems to be required
+	TASKS+=(clang)
+
 	if ! is_wsl; then
 		# stuff for kicad
 		PACKAGES+=(libglu1-mesa-dev libgl1-mesa-dev libglew-dev)

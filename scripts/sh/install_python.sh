@@ -14,11 +14,18 @@ if ! is_cmd pip; then
 	fi
 fi
 
-if is_debian || is_ubuntu; then
-	install_package python3-venv "python$PYTHON_VERSION" "python$PYTHON_VERSION-venv"
-else
-	# If we can't directly install Python, fallback on source building.
+source_install_python() {
 	run_install_if_not "python$PYTHON_VERSION" python-src
+}
+
+if is_rpi; then
+	source_install_python
+elif is_debian || is_ubuntu; then
+	install_package python3-venv \
+		"python$PYTHON_VERSION" \
+		"python$PYTHON_VERSION-venv"
+else
+	source_install_python
 fi
 
 # Create a virtual environment.
