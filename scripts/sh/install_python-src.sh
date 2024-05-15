@@ -44,7 +44,8 @@ elif is_debian || is_ubuntu; then
 fi
 
 # This is used for downloading pre-built releases.
-[ "$PYTHON_FULL_VERSION" ] || export PYTHON_FULL_VERSION="$PYTHON_VERSION.4"
+PYTHON_RELEASE=3
+[ "$PYTHON_FULL_VERSION" ] || export PYTHON_FULL_VERSION="$PYTHON_VERSION.$PYTHON_RELEASE"
 
 PYTHON_SRC_ARCHIVE="v$PYTHON_FULL_VERSION.tar.gz"
 PYTHON_SRC="cpython-$PYTHON_FULL_VERSION"
