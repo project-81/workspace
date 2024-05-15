@@ -32,9 +32,6 @@ PACKAGES+=(gdb-multiarch lcov)
 # utilities
 PACKAGES+=(tmux ack htop mtools shellcheck tree xdg-utils)
 
-# needed by tio
-PACKAGES+=(libglib2.0-dev)
-
 if is_wsl; then
 	PACKAGES+=(wslu)
 fi
