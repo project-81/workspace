@@ -3,9 +3,9 @@
 sudo apt-get update && sudo apt-get upgrade -y
 
 # micropython circuitpython
-TASKS+=(git python rcmpy pkgconf lua neovim zsh ninja-src tio clang)
+TASKS+=(locale git python rcmpy pkgconf lua neovim zsh ninja-src tio clang)
 
-TASKS+=(picotool go fzf-src rust locale)
+TASKS+=(picotool go fzf-src rust)
 
 if is_rpi; then
 	run_install raspberrypi
