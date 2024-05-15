@@ -2,7 +2,6 @@ BASE_URL=https://developer.arm.com/-/media/Files/downloads/gnu
 
 GCC_VERSION=12.2
 VARIANT=mpacbti-rel1
-HOST_ARCH=$(uname -m)
 TOOLCHAIN=arm-none-eabi
 
 DIRECTORY=arm-gnu-toolchain-$GCC_VERSION.$VARIANT-$HOST_ARCH-$TOOLCHAIN
