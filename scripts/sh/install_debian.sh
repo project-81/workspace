@@ -14,6 +14,7 @@ fi
 # build tools
 PACKAGES+=(cmake gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential)
 PACKAGES+=(libstdc++-arm-none-eabi-newlib mold gcc-13 g++-13)
+PACKAGES+=(emscripten)
 
 # gnu
 PACKAGES+=(autoconf automake texinfo flex bison help2man gawk libtool-bin)
@@ -25,10 +26,14 @@ PACKAGES+=(device-tree-compiler libncurses-dev)
 PACKAGES+=(gdb-multiarch lcov)
 
 # utilities
-PACKAGES+=(tmux ack htop mtools shellcheck tree)
+PACKAGES+=(tmux ack htop mtools shellcheck tree xdg-utils)
 
 # needed by tio
 PACKAGES+=(libglib2.0-dev)
+
+if is_wsl; then
+	PACKAGES+=(wslu)
+fi
 
 if ! is_rpi; then
 	if ! is_wsl; then
