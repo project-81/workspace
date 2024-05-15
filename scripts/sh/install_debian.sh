@@ -3,9 +3,9 @@
 sudo apt-get update && sudo apt-get upgrade -y
 
 # micropython circuitpython
-TASKS+=(git python rcmpy neovim zsh ninja-src tio clang)
+TASKS+=(git python rcmpy pkgconf lua neovim zsh ninja-src tio clang)
 
-TASKS+=(picotool go fzf-src rust)
+TASKS+=(picotool go fzf-src rust locale)
 
 if is_rpi; then
 	run_install raspberrypi
@@ -19,13 +19,16 @@ PACKAGES+=(libstdc++-arm-none-eabi-newlib mold gcc-13 g++-13)
 PACKAGES+=(autoconf automake texinfo flex bison help2man gawk libtool-bin)
 
 # unused: swig
-PACKAGES+=(device-tree-compiler pkgconf libncurses-dev)
+PACKAGES+=(device-tree-compiler libncurses-dev)
 
 # gdb and other dev tooling
 PACKAGES+=(gdb-multiarch lcov)
 
 # utilities
 PACKAGES+=(tmux ack htop mtools shellcheck tree)
+
+# needed by tio
+PACKAGES+=(libglib2.0-dev)
 
 if ! is_rpi; then
 	if ! is_wsl; then

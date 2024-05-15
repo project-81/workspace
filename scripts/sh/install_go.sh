@@ -21,7 +21,7 @@ else
 
 	# Determine which variant to download.
 	VARIANT=""
-	case $(uname -m) in
+	case "$HOST_ARCH" in
 		aarch64)
 			VARIANT=arm64;;
 		armv6l)
