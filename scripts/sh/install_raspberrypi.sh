@@ -9,4 +9,7 @@ for repo in "${REPOS[@]}"; do
 	clone_third_party_github raspberrypi "$repo"
 done
 
-PACKAGES+=(i2c-tools)
+PACKAGES+=(i2c-tools matchbox-keyboard wvkbd)
+
+# do on screen keyboard stuff
+# sudo cp ./keyboard.xml /usr/share/matchbox-keyboard/keyboard.xml
