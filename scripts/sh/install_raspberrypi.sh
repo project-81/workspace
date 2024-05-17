@@ -9,7 +9,10 @@ for repo in "${REPOS[@]}"; do
 	clone_third_party_github raspberrypi "$repo"
 done
 
-PACKAGES+=(i2c-tools matchbox-keyboard wvkbd)
+# pick one of the keyboards
+PACKAGES+=(i2c-tools wvkbd)
 
-# do on screen keyboard stuff
-# sudo cp ./keyboard.xml /usr/share/matchbox-keyboard/keyboard.xml
+# https://forums.raspberrypi.com/viewtopic.php?t=358654
+# in file .config/wf-panel-pi.ini ADD the following:
+# autohide=true
+# autohide_duration=500
