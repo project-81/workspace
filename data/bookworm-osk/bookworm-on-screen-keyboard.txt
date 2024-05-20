@@ -1,0 +1,47 @@
+HOW-TO: install an on-screen Keyboard to Bookworm
+
+Introduction: The latest PI OS (Bookworm) uses Wayland.  The distribution shipped (Oct 2023) without an on-screen keyboard.  Most on-screen keyboards (like matchbox-keyboard) do not work under wayland.  This process will install both matchbox-keyboard (for X11 use) and wvkbd (for use under wayland).
+
+Installation:
+1) set the localisations in the "preferences - Raspberry pi configuration - localisation".
+   - this may not be necessary in the future, but the current pi-imager (1.7.5) does not set them properly.
+   - the bug is reported to pi-imager, i assume it will be fixed soon
+   
+2) copy the files in.  In this example, i copied then to /home/pi.  The below instructions assume this is the source location for copying files to other locations. YMMV
+   files to be copied in: (files in the zip archive)
+    - keyboard.xml
+    - wvkbd.desktop
+    - toggle-wvkbd.sh
+   
+2a) make sure "toggle-wvkbd.sh" is set to executable (right-click - properties - permissions -execute by anybody)
+
+3) install matchbox-keyboard:
+   - with "sudo apt install matchbox-keyboard" in a terminal
+
+3a) replace the default (terrible) matchbox keyboard ..copy the new xml file in. (use a terminal)
+   - "sudo cp ./keyboard.xml /usr/share/matchbox-keyboard/keyboard.xml"
+   - the above replaces the default matchbox-keyboard with a new keyboard layout. (in case you ever switch back to X environment.)
+   
+   
+4) Install wvkbd
+   - "sudo apt install wvkbd"
+   - note: this creates "wvkbd-mobintl" executable in /usr/bin
+5) copy the scripts to toggle keyboard and the desktop file in to /usr/bin:
+   - "sudo cp ./toggle-wvkbd.sh /usr/bin/toggle-wvkbd.sh"
+   - "sudo cp ./wvkbd.desktop /usr/bin/wvkbd.desktop"
+   
+6) Add to the launcher menu
+  - note: this adds a new icon to the (left) launcher menu, as i could not figure out how to add it to the panel applets on the right side
+  - open file manager
+  - enable "hidden files" in the menu (view - show hidden)
+  - open folder ".config"
+  - EDIT the file "wf-panel-pi.ini" as follows:
+     - under "launcher_000003=lxterminal.desktop" ADD a NEW line:
+     "launcher_000004=/usr/bin/wvkbd.desktop"
+     - Save the file
+     - a new icon should appear to toggle the on-screen keyboard.
+     
+final note: my "toggle-wvkbd.sh" script has set the colors and size to my liking. you can edit this bash script to set whatever options you prefer.  Also, when everything is working you may delete the files from /home/pi where you copied them in (step 2 above)
+
+@TerribleTed Oct 2023
+
