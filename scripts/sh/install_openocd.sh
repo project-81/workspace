@@ -12,7 +12,8 @@ if is_debian || is_ubuntu; then
 	install_package automake autoconf texinfo libtool libftdi-dev
 fi
 
-clone_third_party_github_shallow raspberrypi $PROJECT --branch=rp2040
+clone_third_party_github_shallow raspberrypi $PROJECT \
+	--branch=rp2040-v0.12.0 --single-branch --depth 1
 
 safe_pushd "$THIRD_PARTY/$PROJECT"
 

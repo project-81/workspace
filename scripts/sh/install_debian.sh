@@ -34,6 +34,8 @@ PACKAGES+=(tmux ack htop mtools shellcheck tree xdg-utils)
 
 if is_wsl; then
 	PACKAGES+=(wslu)
+else
+	TASKS+=(openocd)
 fi
 
 if ! is_rpi; then
