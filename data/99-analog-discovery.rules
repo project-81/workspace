@@ -1,3 +1,6 @@
+# sudo cp ./99-analog-discovery.rules /etc/udev/rules.d/
+# sudo udevadm control --reload-rules
+
 # ID 0403:6001 Future Technology Devices International, Ltd FT232 Serial (UART) IC
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", MODE="0666"
 
@@ -6,3 +9,9 @@ SUBSYSTEM=="usb", ATTRS{idVendor}=="1443", ATTRS{idProduct}=="0007", MODE="0666"
 
 # ID 0424:2512 Microchip Technology, Inc. (formerly SMSC) USB 2.0 Hub
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0424", ATTRS{idProduct}=="2512", MODE="0666"
+
+# ID 2e8a:000c Raspberry Pi Debug Probe (CMSIS-DAP)
+SUBSYSTEM=="usb", ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="000c", MODE="0666"
+
+# ID 2e8a:0003 Raspberry Pi RP2 Boot
+SUBSYSTEM=="usb", ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="0003", MODE="0666"
