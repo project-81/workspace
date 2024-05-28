@@ -1,7 +1,13 @@
-DEVICE=/dev/sdb
+#!/bin/bash
 
-# /etc/udev/rules.d
+REPO=$(git rev-parse --show-toplevel)
+# shellcheck source=common.sh
+. "$REPO/scripts/common.sh"
 
-# udevadm control --reload-rules
+# DEVICE=/dev/sdb
+# udevadm info -a -n $DEVICE | less
 
-udevadm info -a -n $DEVICE | less
+set -x
+
+sudo_cmd cp "$REPO/data/99-analog-discovery.rules" /etc/udev/rules.d
+sudo_cmd udevadm control --reload-rules
