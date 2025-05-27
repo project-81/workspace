@@ -1,11 +1,11 @@
 #!/bin/bash
 
-CLANG_VERSION=17
+CLANG_VERSION=19
 
 if ! is_cmd clang-$CLANG_VERSION; then
 	wget https://apt.llvm.org/llvm.sh
 	chmod +x ./llvm.sh
-	sudo ./llvm.sh 17
+	sudo ./llvm.sh $CLANG_VERSION
 	rm llvm.sh
 fi
 
