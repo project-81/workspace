@@ -23,7 +23,7 @@ if ! is_cmd unzip; then
 fi
 
 PROJECT=neovim
-VERSION=0.9
+VERSION=0.11
 
 clone_third_party_github_shallow $PROJECT $PROJECT "--branch=release-$VERSION"
 safe_pushd "$THIRD_PARTY/$PROJECT"
