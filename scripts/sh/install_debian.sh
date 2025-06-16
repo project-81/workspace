@@ -21,16 +21,16 @@ fi
 # PACKAGES+=(emscripten)
 
 # gnu
-# PACKAGES+=(autoconf automake texinfo flex bison help2man gawk libtool-bin)
+PACKAGES+=(automake autoconf texinfo flex bison gawk libtool-bin help2man)
 
-# unused: swig
-# PACKAGES+=(device-tree-compiler libncurses-dev)
+# unused: swig device-tree-compiler
+PACKAGES+=(libncurses-dev pkgconf)
 
 # gdb and other dev tooling
 PACKAGES+=(gdb-multiarch lcov)
 
 # utilities
-PACKAGES+=(tmux ack htop mtools shellcheck tree xdg-utils)
+PACKAGES+=(tmux ack htop mtools shellcheck tree xdg-utils unzip)
 
 if is_wsl; then
 	PACKAGES+=(wslu)
