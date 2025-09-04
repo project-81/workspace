@@ -51,5 +51,6 @@ is_wsl() {
 is_rpi() {
 	[ "$(uname -n)" = "raspberrypi" ] \
 		|| is_raspbian \
-		|| [[ $(uname -n) == "rpi"* ]]
+		|| [[ $(uname -n) == "rpi"* ]] \
+		|| [[ $(uname -n) == *"-pi" ]]
 }
