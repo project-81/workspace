@@ -5,7 +5,8 @@ sudo apt-get update && sudo apt-get upgrade -y
 # micropython circuitpython
 TASKS+=(locale git python rcmpy pkgconf lua neovim zsh ninja-src tio)
 
-TASKS+=(picotool go fzf-src)
+# go fzf-src
+TASKS+=(picotool)
 
 if is_rpi; then
 	run_install raspberrypi
