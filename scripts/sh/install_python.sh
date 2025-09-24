@@ -23,7 +23,7 @@ if is_rpi; then
 elif is_debian || is_ubuntu; then
 	install_package python3-venv \
 		"python$PYTHON_VERSION" \
-		"python$PYTHON_VERSION-venv"
+		"python$PYTHON_VERSION-venv" || source_install_python
 else
 	source_install_python
 fi
