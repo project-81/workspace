@@ -41,7 +41,7 @@ fi
 
 if ! is_rpi; then
 	# ubuntu seems to be required
-	TASKS+=(clang)
+	# TASKS+=(clang)
 
 	# if ! is_wsl; then
 		# stuff for kicad
