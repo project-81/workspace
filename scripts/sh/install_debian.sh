@@ -34,7 +34,8 @@ PACKAGES+=(gdb-multiarch lcov)
 PACKAGES+=(tmux ack htop mtools shellcheck tree xdg-utils unzip)
 
 if is_wsl; then
-	PACKAGES+=(wslu)
+	# PACKAGES+=(wslu)
+	echo "WSL detected."
 # else
 	# TASKS+=(openocd)
 fi
